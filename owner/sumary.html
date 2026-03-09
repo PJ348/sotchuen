@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สรุปยอดขาย</title>
+    <link href="./src/output.css" rel="stylesheet">
+    <link rel="icon" href="./img/logo-rbg.png">
+    <script src="https://kit.fontawesome.com/b118461cf7.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: none;
+            /* Firefox */
+        }
+    </style>
+</head>
+
+<body class="bg-bg max-w-[1920px] min-h-[1080px] my-auto mx-auto font-kanit overflow-x-hidden">
+
+    <!--Navbar-->
+    <nav class="relative z-[110] bg-white flex flex-row justify-between shadow-lg items-center py-3">
+        <div class="flex items-center gap-7">
+            <img src="./img/logo-rbg.png" rel="img-logo"
+                class="size-25 inset-shadow-2xs shadow-lg ml-15 rounded-full">
+            <div class="flex-col font-medium text-green-logo">
+                <p class="text-[40px]">ร้านสดชื่น</p>
+                <p class="text-2xl">หน้า ม.พะเยา</p>
+            </div>
+        </div>
+
+        <div class="flex gap-15 items-center mr-12">
+            <div>
+                <div class="flex gap-3 text-3xl mb-1">
+                    <i class="fa-solid fa-calendar"></i>
+                    <p class="font-semibold">12 / 30 / 2569</p>
+                </div>
+                <div class="flex gap-3 text-3xl justify-end">
+                    <i class="fa-regular fa-clock mt-1"></i>
+                    <p class="font-semibold text-green-logo">12 : 00 น.</p>
+                </div>
+            </div>
+
+            <button id="closd-order"
+                class=" flex items-center-safe border-5 border-red-order text-red-order rounded-full py-4 px-8 hover:cursor-pointer duration-300 hover:scale-95 transition-colors">
+                <i id="toggle-icon" class="fa-solid fa-pause text-[35px]"></i>
+                <p id="toggle-text" class="font-bold text-[32px]"> ปิดรับออเดอร์</p>
+            </button>
+        </div>
+    </nav>
+
+    <!--หัวเรื่อง-->
+    <header class="flex justify-between mt-6 mb-1">
+        <h1 class="text-[40px] font-semibold ml-15">สรุปยอดขาย</h1>
+        <div class="flex gap-10 mr-10">
+            <h1 class="text-[32px] font-medium content-center">วันที่ <span id="date">1 </span><span
+                    id="mont">กุมภาพันธ์ </span><span id="year">2569</span></h1>
+            <button id="search-btn"
+                class="bg-orang-menu w-[156px] h-[60px] rounded-3xl y-3 text-[20px] font-semibold hover:scale-95 duration-200 cursor-pointer">ค้นหา</button>
+        </div>
+    </header>
+
+    <!--Sumary-->
+    <main id="card_sumary" class="flex gap-4 justify-between w-full select-none px-7 py-4">
+        <!--left detail -->
+        <div class="flex flex-col gap-6 opacity-0 translate-y-[100px]">
+            <div
+                class="flex-col bg-linear-to-b/srgb from-green-500 to-green-700 w-[454px] h-[295px] rounded-4xl drop-shadow-xl shadow-lg py-8 px-10">
+                <h1 class="text-[32px] font-medium text-white">ยอดขายรวมทั้งหมด</h1>
+                <h1 class="text-5xl font-bold text-white mt-2 mb-20">1200 <span class="text-[32px]">บาท</span></h1>
+                <div class="flex gap-5">
+                    <h1 class="bg-black/20 rounded-full px-4 py-2 text-white text-[20px] font-normal">ทานที่ร้าน
+                        &nbsp;50%</h1>
+                    <h1 class="bg-black/20 rounded-full px-4 py-2 text-white text-[20px] font-normal">สั่งกลับบ้าน
+                        &nbsp;50%</h1>
+                </div>
+            </div>
+            <div
+                class="flex-col bg-linear-to-b/srgb from-blue-500 to-blue-700 w-[454px] h-[295px] rounded-4xl drop-shadow-xl shdow-lg py-8 px-10">
+                <h1 class="text-[32px] font-medium text-white">จำนวนออเดอร์</h1>
+                <h1 class="text-5xl font-bold text-white mt-2 mb-20">50 <span class="text-[32px]">รายการ</span></h1>
+                <div class="flex gap-5">
+                    <h1 class="bg-black/20 rounded-full px-4 py-2 text-white text-[20px] font-normal">เฉลี่ย
+                        &nbsp;200บาท/บิล</h1>
+                </div>
+            </div>
+        </div>
+        <!--center detail-->
+        <div
+            class="flex flex-col bg-white w-[926px] h-[613px] rounded-4xl shadow-lg border-2 border-gray-200 gap-7 opacity-0 translate-y-[100px]">
+            <h1 class="pl-10 pt-8 text-[32px] font-medium">รายการออเดอร์</h1>
+            <div class="flex justify-around h-[84.96px] bg-gray-100 items-center px-5">
+                <h1 class="text-[20px] font-semibold">เวลา</h1>
+                <h1 class="text-[20px] font-semibold">หมายเลข</h1>
+                <h1 class="text-[20px] font-semibold">ประเภท</h1>
+                <h1 class="text-[20px] font-semibold">รายการ</h1>
+                <h1 class="text-[20px] font-semibold">ยอดรวม</h1>
+                <h1 class="text-[20px] font-semibold">สถานะ</h1>
+            </div>
+            <div class="flex-col w-[850px] h-[345px] bg-white overflow-y-auto ml-7 select-none no-scrollbar">
+                <div id="row1" class="flex items-center justify-around w-[850px] h-[38px] gap-10 mb-5">
+                    <p class="text-[20px] w-[100px] font-normal text-center">11.00</p>
+                    <p class="text-[20px] w-[100px] font-normal text-left pl-5">#01</p>
+                    <p
+                        class="text-[20px] w-[100px] font-medium bg-green-logo/30 text-green-logo rounded-full py-1 px-2 text-center">
+                        ทานที่ร้าน</p>
+                    <p class="text-[20px] w-[100px] font-normal text-center">4</p>
+                    <p class="text-[20px] w-[100px] font-normal text-center">230 บาท</p>
+                    <p class="text-[20px] w-[100px] font-normal text-center"><i
+                            class="fa-solid fa-check text-green-logo"></i></p>
+                </div>
+                <div id="row2" class="flex items-center justify-around w-[850px] h-[38px] gap-10 mb-5">
+                    <p class="text-[20px] w-[100px] font-normal text-center">11.15</p>
+                    <p class="text-[20px] w-[100px] font-normal text-left pl-5">#02</p>
+                    <p
+                        class="text-[20px] w-[100px] font-medium bg-orang-menu/30 text-orang-menu rounded-full py-1 px-2 text-center">
+                        ทานที่ร้าน</p>
+                    <p class="text-[20px] w-[100px] font-normal text-center">1</p>
+                    <p class="text-[20px] w-[100px] font-normal text-center">390 บาท</p>
+                    <p class="text-[20px] w-[100px] font-normal text-center"><i
+                            class="fa-solid fa-check text-green-logo"></i></p>
+                </div>
+                <div id="row3" class="flex items-center justify-around w-[850px] h-[38px] gap-10 mb-5">
+                    <p class="text-[20px] w-[100px] font-normal text-center">11.30</p>
+                    <p class="text-[20px] w-[100px] font-normal text-left pl-5">#03</p>
+                    <p
+                        class="text-[20px] w-[100px] font-medium bg-green-logo/30 text-green-logo rounded-full py-1 px-2 text-center">
+                        ทานที่ร้าน</p>
+                    <p class="text-[20px] w-[100px] font-normal text-center">2</p>
+                    <p class="text-[20px] w-[100px] font-normal text-center">260 บาท</p>
+                    <p class="text-[20px] w-[100px] font-normal text-center"><i
+                            class="fa-solid fa-check text-green-logo"></i></p>
+                </div>
+                <div id="row4" class="flex items-center justify-around w-[850px] h-[38px] gap-10 mb-5">
+                    <p class="text-[20px] w-[100px] font-normal text-center">12.00</p>
+                    <p class="text-[20px] w-[100px] font-normal text-left pl-5">#04</p>
+                    <p
+                        class="text-[20px] w-[100px] font-medium bg-orang-menu/30 text-orang-menu rounded-full py-1 px-2 text-center">
+                        ทานที่ร้าน</p>
+                    <p class="text-[20px] w-[100px] font-normal text-center">3</p>
+                    <p class="text-[20px] w-[100px] font-normal text-center">315 บาท</p>
+                    <p class="text-[20px] w-[100px] font-normal text-center"><i
+                            class="fa-solid fa-check text-green-logo"></i></p>
+                </div>
+                <div id="row5" class="flex items-center justify-around w-[850px] h-[38px] gap-10 mb-5">
+                    <p class="text-[20px] w-[100px] font-normal text-center">12.15</p>
+                    <p class="text-[20px] w-[100px] font-normal text-left pl-5">#05</p>
+                    <p
+                        class="text-[20px] w-[100px] font-medium bg-green-logo/30 text-green-logo rounded-full py-1 px-2 text-center">
+                        ทานที่ร้าน</p>
+                    <p class="text-[20px] w-[100px] font-normal text-center">2</p>
+                    <p class="text-[20px] w-[100px] font-normal text-center">100 บาท</p>
+                    <p class="text-[20px] w-[100px] font-normal text-center"><i
+                            class="fa-solid fa-check text-green-logo"></i></p>
+                </div>
+                <div id="row6" class="flex items-center justify-around w-[850px] h-[38px] gap-10 mb-5">
+                    <p class="text-[20px] w-[100px] font-normal text-center">12.30</p>
+                    <p class="text-[20px] w-[100px] font-normal text-left pl-5">#06</p>
+                    <p
+                        class="text-[20px] w-[100px] font-medium bg-orang-menu/30 text-orang-menu rounded-full py-1 px-2 text-center">
+                        ทานที่ร้าน</p>
+                    <p class="text-[20px] w-[100px] font-normal text-center">1</p>
+                    <p class="text-[20px] w-[100px] font-normal text-center">45 บาท</p>
+                    <p class="text-[20px] w-[100px] font-normal text-center"><i
+                            class="fa-solid fa-check text-green-logo"></i></p>
+                </div>
+                <div id="row7" class="flex items-center justify-around w-[850px] h-[38px] gap-10 mb-5">
+                    <p class="text-[20px] w-[100px] font-normal text-center">12.50</p>
+                    <p class="text-[20px] w-[100px] font-normal text-left pl-5">#07</p>
+                    <p
+                        class="text-[20px] w-[100px] font-medium bg-green-logo/30 text-green-logo rounded-full py-1 px-2 text-center">
+                        ทานที่ร้าน</p>
+                    <p class="text-[20px] w-[100px] font-normal text-center">4</p>
+                    <p class="text-[20px] w-[100px] font-normal text-center">230 บาท</p>
+                    <p class="text-[20px] w-[100px] font-normal text-center"><i
+                            class="fa-solid fa-check text-green-logo"></i></p>
+                </div>
+                <div id="row8" class="flex items-center justify-around w-[850px] h-[38px] gap-10 mb-5">
+                    <p class="text-[20px] w-[100px] font-normal text-center">13.00</p>
+                    <p class="text-[20px] w-[100px] font-normal text-left pl-5">#08</p>
+                    <p
+                        class="text-[20px] w-[100px] font-medium bg-orang-menu/30 text-orang-menu rounded-full py-1 px-2 text-center">
+                        ทานที่ร้าน</p>
+                    <p class="text-[20px] w-[100px] font-normal text-center">4</p>
+                    <p class="text-[20px] w-[100px] font-normal text-center">230 บาท</p>
+                    <p class="text-[20px] w-[100px] font-normal text-center"><i
+                            class="fa-solid fa-check text-green-logo"></i></p>
+                </div>
+                <div id="row9" class="flex items-center justify-around w-[850px] h-[38px] gap-10 mb-5">
+                    <p class="text-[20px] w-[100px] font-normal text-center">13.00</p>
+                    <p class="text-[20px] w-[100px] font-normal text-left pl-5">#09</p>
+                    <p
+                        class="text-[20px] w-[100px] font-medium bg-green-logo/30 text-green-logo rounded-full py-1 px-2 text-center">
+                        ทานที่ร้าน</p>
+                    <p class="text-[20px] w-[100px] font-normal text-center">4</p>
+                    <p class="text-[20px] w-[100px] font-normal text-center">230 บาท</p>
+                    <p class="text-[20px] w-[100px] font-normal text-center"><i
+                            class="fa-solid fa-check text-green-logo"></i></p>
+                </div>
+                <div id="row10" class="flex items-center justify-around w-[850px] h-[38px] gap-10 mb-5">
+                    <p class="text-[20px] w-[100px] font-normal text-center">13.50</p>
+                    <p class="text-[20px] w-[100px] font-normal text-left pl-5">#10</p>
+                    <p
+                        class="text-[20px] w-[100px] font-medium bg-green-logo/30 text-green-logo rounded-full py-1 px-2 text-center">
+                        ทานที่ร้าน</p>
+                    <p class="text-[20px] w-[100px] font-normal text-center">4</p>
+                    <p class="text-[20px] w-[100px] font-normal text-center">230 บาท</p>
+                    <p class="text-[20px] w-[100px] font-normal text-center"><i
+                            class="fa-solid fa-check text-green-logo"></i></p>
+                </div>
+            </div>
+        </div>
+        <!--right detail -->
+        <div class="flex flex-col gap-6 opacity-0 translate-y-[100px]">
+            <div class="flex-col bg-white w-[454px] h-[295px] rounded-4xl drop-shadow-xl shadow-lg py-8 px-10">
+                <h1 class="text-[32px] font-medium">ยอดขายรวมทั้งหมด</h1>
+
+                <!--ทานที่ร้าน-->
+                <div class="flex justify-between mt-3">
+                    <div class="flex items-center gap-3">
+                        <div class="bg-green-logo rounded-full size-[16px]"></div>
+                        <h2 class="text-[20px] font-normal">ทานที่ร้าน</h2>
+                    </div>
+                    <h2 class="text-[20px] font-normal">5,160 บาท</h2>
+                </div>
+                <div class="bg-gray-300 w-[375px] h-[16px] rounded-full mt-2">
+                    <div class="bg-green-logo w-[187px] h-[16px] rounded-full"></div>
+                </div>
+                <p class="text-right text-black/30 text-[20px] font-normal">ออเดอร์ [50%]</p>
+
+                <!--สั่งกลับบ้าน-->
+                <div class="flex justify-between mt-3">
+                    <div class="flex items-center gap-3">
+                        <div class="bg-orang-menu rounded-full size-[16px]"></div>
+                        <h2 class="text-[20px] font-normal">ทานที่ร้าน</h2>
+                    </div>
+                    <h2 class="text-[20px] font-normal">5,160 บาท</h2>
+                </div>
+                <div class="bg-gray-300 w-[375px] h-[16px] rounded-full mt-2">
+                    <div class="bg-orang-menu w-[187px] h-[16px] rounded-full"></div>
+                </div>
+                <p class="text-right text-black/30 text-[20px] font-normal">ออเดอร์ [50%]</p>
+
+            </div>
+
+            <div class="flex-col bg-white w-[454px] h-[295px] rounded-4xl drop-shadow-xl shdow-lg py-2 px-10">
+                <h1 class="text-[32px] font-medium">เมนูขายดี</h1>
+                <div class="flex mt-2 items-center gap-5">
+                    <div
+                        class="bg-green-logo rounded-full size-[36px] text-white font-medium items-center text-center text-2xl">
+                        1
+                    </div>
+                    <img src="./img/food-menu4.jpg" alt="กะเพรา" class="size-[64px] rounded-3xl">
+                    <p class="w-[130px] h-[32px] text-2xl font-semibold">ข้าวกะเพรา</p>
+                    <p class="w-[100px] h-[32px] text-2xl font-semibold">40 บาท</p>
+                </div>
+                <div class="flex mt-2 items-center gap-5">
+                    <div
+                        class="bg-orang-menu rounded-full size-[36px] text-white font-medium items-center text-center text-2xl">
+                        2
+                    </div>
+                    <img src="./img/food-menu7.jpg" alt="กะเพรา" class="size-[64px] rounded-3xl">
+                    <p class="w-[130px] h-[32px] text-2xl font-semibold">ข้าวทะเล</p>
+                    <p class="w-[100px] h-[32px] text-2xl font-semibold">55 บาท</p>
+                </div>
+                <div class="flex mt-2 items-center gap-5">
+                    <div
+                        class="bg-green-logo rounded-full size-[36px] text-white font-medium items-center text-center text-2xl">
+                        3
+                    </div>
+                    <img src="./img/food-menu1.jpg" alt="กะเพรา" class="size-[64px] rounded-3xl">
+                    <p class="w-[130px] h-[32px] text-2xl font-semibold">ข้าวไข่ข้น</p>
+                    <p class="w-[100px] h-[32px] text-2xl font-semibold">55 บาท</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="flex justify-center my-5">
+
+        <div id="btn-home"
+            class="bg-white border-gray-100 border-2 w-auto h-[150px] rounded-4xl shadow-2xl content-center px-10">
+            <div class="flex gap-10">
+                <!--Home page-->
+                <button onclick="window.location.href = './index.html'"
+                    class="bg-white w-auto h-auto rounded-4xl p-4 content-center hover:shadow-xl text-center duration-300 hover:scale-90 ml-5">
+                    <i class="fa-solid fa-house text-5xl"></i>
+                    <p class="text-3xl font-medium">หน้าจอหลัก</p>
+                </button>
+
+
+                <!--สรุปยอดขาย-->
+                <button id="btn-summary"
+                    class="flex w-[330px] h-[130px] bg-green-logo rounded-4xl ml-2 content-center p-3 duration-300 hover:scale-90">
+                    <div class="bg-white/30 size-[110px] rounded-4xl content-center text-center">
+                        <i class="fa-solid fa-clipboard-list text-[45px] mb-3 text-white"></i>
+                    </div>
+                    <div class="flex-col content-center ml-5 text-white">
+                        <p class="text-3xl font-semibold text-left">สรุปยอดขาย</p>
+                        <p class="text-[20px] font-light">รายการสรุปยอดขาย</p>
+                    </div>
+                </button>
+
+                <!--ตั้งค่าเมนู-->
+                <button onclick="window.location.href = './menusetting.html'"
+                    class="bg-white w-auto h-auto rounded-4xl p-4 content-center hover:shadow-xl text-center duration-300 hover:scale-90">
+                    <i class="fa-solid fa-sliders text-[45px] mb-3"></i>
+                    <p class="text-3xl font-medium"> ตั้งค่าเมนู </p>
+                </button>
+
+            </div>
+        </div>
+
+    </footer>
+
+    <!--Confirm modal-->
+    <div id="confirm-modal"
+        class="fixed inset-0 z-[100] bg-black/50 flex items-center justify-center hidden backdrop-blur-sm">
+
+        <div class="bg-white rounded-4xl p-10 w-[800px] h-[650px] shadow-2xl flex flex-col items-center">
+            <div
+                class="flex justify-center bg-red-200/30 rounded-full size-[159px] mt-10 mb-6 items-center content-center">
+                <i class="fa-solid fa-circle-exclamation text-red-order text-[89px]"></i>
+            </div>
+
+            <h2 class="text-[40px] font-bold text-gray-800 mb-4">ยืนยันการปิดรับออเดอร์?</h2>
+            <p class="text-3xl font-normal text-gray-500 mb-10 text-center">หากปิดรับออเดอร์<br>
+                ลูกค้าจะไม่สามารถสั่งอาหารผ่านระบบได้ชั่วคราว<br>ต้องการดำเนินการต่อใช่หรือไม่?</p>
+
+            <div class="flex gap-6 w-full">
+                <button id="confirm-btn"
+                    class="flex-1 rounded-full text-3xl font-semibold border-4 text-white bg-red-order duration-300 cursor-pointer hover:scale-95 w-[331px] h-[97px]">
+                    ยืนยันปิดออเดอร์
+                </button>
+                <button id="cancel-btn"
+                    class="flex-1 rounded-full text-3xl font-semibold bg-black/10 text-red-order hover:bg-gray-100 duration-300 cursor-pointer hover:scale-95 w-[331px] h-[97px]">
+                    ยกเลิก
+                </button>
+            </div>
+        </div>
+        <script src="./closeorder.js"></script>
+        <script>
+            const cancelModal = document.getElementById('confirm-modal');
+            const btnYes = document.getElementById('confirm-btn');
+            const btnNo = document.getElementById('cancel-btn');
+
+            // --- 1. กรณีที่กดยืนยัน (เปลี่ยนไปหน้าเว็บใหม่) ---
+            btnYes.addEventListener('click', () => {
+                // ปิด Modal ก่อน (เพื่อความเนียนก่อนภาพตัด)
+                cancelModal.classList.add('hidden');
+
+                window.location.href = './webclosedorder.html';
+            });
+
+            // --- 2. กรณีที่กดยกเลิก (แค่ปิด Modal ไม่ต้องทำอะไรเพิ่ม) ---
+            btnNo.addEventListener('click', () => {
+                // สั่งใส่คลาส hidden เพื่อซ่อนหน้าต่าง Modal กลับไปแค่นั้นเลยครับ
+                cancelModal.classList.add('hidden');
+            });
+        </script>
+
+    </div>
+
+    <!--Search dd/mm/yy-->
+    <div id="calendar-modal"
+        class="fixed inset-0 z-[100] bg-black/50 hidden flex items-center justify-center backdrop-blur-sm">
+        <div class="bg-white rounded-4xl p-12 w-[800px] shadow-2xl flex flex-col mt-30">
+            <h2 class="text-[40px] font-bold text-gray-800 mb-6 text-center">เลือกวันที่ค้นหา</h2>
+
+            <div class="flex justify-center gap-5 text-4xl font-bold mb-8 border-b-4 border-gray-100 pb-6">
+                <button id="nav-day"
+                    class="text-red-600 border-b-4 border-red-600 px-4 pb-2 transition-colors">วัน</button>
+                <span class="text-gray-300">/</span>
+                <button id="nav-month"
+                    class="text-gray-400 hover:text-red-400 px-4 pb-2 transition-colors pointer-events-none">เดือน</button>
+                <span class="text-gray-300">/</span>
+                <button id="nav-year"
+                    class="text-gray-400 hover:text-red-400 px-4 pb-2 transition-colors pointer-events-none">ปี</button>
+            </div>
+
+            <div class="h-[450px] w-full relative">
+
+                <div id="view-day" class="absolute inset-0 transition-opacity duration-300">
+                    <div id="day-grid" class="grid grid-cols-7 gap-4 place-items-center">
+                    </div>
+                </div>
+
+                <div id="view-month"
+                    class="absolute inset-0 opacity-0 pointer-events-none transition-opacity duration-300">
+                    <div id="month-grid" class="grid grid-cols-4 gap-6 mt-6">
+                    </div>
+                </div>
+
+                <div id="view-year"
+                    class="absolute inset-0 opacity-0 pointer-events-none transition-opacity duration-300">
+                    <div id="year-grid" class="grid grid-cols-3 gap-6 mt-12">
+                    </div>
+                </div>
+
+            </div>
+
+            <p id="date-error"
+                class="text-red-500 text-center text-2xl font-semibold h-[32px] mt-4 opacity-0 transition-opacity">
+                ไม่สามารถเลือกวันล่วงหน้าได้</p>
+
+            <div class="flex gap-6 w-full mt-6">
+                <button id="next-calendar-btn"
+                    class="flex-1 py-5 rounded-full text-3xl font-semibold bg-red-600 text-white hover:bg-red-700 duration-300 shadow-lg opacity-50 pointer-events-none transition-all">
+                    ตกลง
+                </button>
+                <button id="cancel-calendar-btn"
+                    class="flex-1 py-5 rounded-full text-3xl font-semibold border-4 border-gray-300 text-gray-500 hover:bg-gray-100 duration-300 cursor-pointer">
+                    ยกเลิก
+                </button>
+            </div>
+        </div>
+    </div>
+    <!--Search confirm-->
+    <div id="confirm-search-modal"
+        class="fixed inset-0 z-[100] bg-black/50 hidden flex items-center justify-center backdrop-blur-sm">
+        <div class="bg-white rounded-4xl p-10 w-[600px] shadow-2xl flex flex-col items-center mt-20">
+            <div class="flex justify-center bg-blue-100 rounded-full size-[120px] mb-6 items-center content-center">
+                <i class="fa-solid fa-calendar-check text-blue-500 text-[60px]"></i>
+            </div>
+            <h2 class="text-[40px] font-bold text-gray-800 mb-4">ยืนยันการค้นหา?</h2>
+            <p class="text-2xl font-normal text-gray-500 mb-10 text-center">
+                คุณต้องการดูข้อมูลยอดขายของวันที่<br>
+                <span id="confirm-date-text" class="font-bold text-orang-menu text-3xl"></span><br>
+                ใช่หรือไม่?
+            </p>
+
+            <div class="flex gap-6 w-full">
+                <button id="submit-search-btn"
+                    class="flex-1 py-4 rounded-full text-3xl font-semibold bg-blue-500 text-white hover:bg-blue-600 duration-300 cursor-pointer shadow-lg">
+                    ยืนยันค้นหา
+                </button>
+                <button id="back-search-btn"
+                    class="flex-1 py-4 rounded-full text-3xl font-semibold border-4 border-gray-300 text-gray-500 hover:bg-gray-100 duration-300 cursor-pointer">
+                    ยกเลิก
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="./canlendar.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // ใช้คำสั่ง querySelectorAll เพื่อดึง div ลูกทั้ง 3 ตัวที่อยู่ใน #card_sumary
+            const columns = document.querySelectorAll('#card_sumary > div');
+
+            if (columns.length > 0) {
+                columns.forEach((col, index) => {
+                    // 1. ใส่คลาสแอนิเมชันเตรียมไว้
+                    col.classList.add('transition-all', 'duration-1000', 'ease-out');
+
+                    // 2. หน่วงเวลาตามลำดับ (index 0=ซ้าย, 1=กลาง, 2=ขวา)
+                    // กล่องซ้ายเด้งที่ 100ms -> กลางเด้งที่ 300ms -> ขวาเด้งที่ 500ms
+                    setTimeout(() => {
+                        col.classList.remove('opacity-0', 'translate-y-[100px]');
+                        col.classList.add('opacity-100', 'translate-y-0');
+                    }, 100 + (index * 200)); // เปลี่ยนตัวเลข 200 ตรงนี้ได้ถ้าอยากให้ไล่ช้า/เร็วขึ้น
+                });
+            }
+        });
+    </script>
+
+</body>
+
+</html>
