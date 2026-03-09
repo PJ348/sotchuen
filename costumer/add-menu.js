@@ -154,7 +154,7 @@ function checkSelection() {
     const sizeOption = sizeRadio ? sizeRadio.nextElementSibling.innerText : 'ธรรมดา';
     
     const riceRadio = document.querySelector('input[name="ricesize"]:checked');
-    const riceOption = riceRadio ? riceRadio.nextElementSibling.innerText : '';
+   const riceOption = riceRadio ? riceRadio.value : 'normalRice';
     
     const reqText = document.getElementById('req').value;
 
