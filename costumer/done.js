@@ -144,16 +144,16 @@ function renderCart() {
         }
 
         let riceText = 'ปกติ'; // ตั้งค่าเริ่มต้น
-        if (item.options.rice === 'extra') {
-            riceText = 'เพิ่มข้าว';
-        } else if (item.options.rice === 'less') {
+        if (item.options.rice === 'extraRice') {
+            riceText = 'ข้าวมาก';
+        } else if (item.options.rice === 'lessRice') {
             riceText = 'ข้าวน้อย';
         }
 
-        let reqHTML = ' '; // ตั้งค่าเริ่มต้น
+        let reqHTML = ''; // ตั้งค่าเริ่มต้น
         if (item.options.req && item.options.req.trim() !== '') {
 
-            reqText = item.options.req;
+            let reqText = item.options.req;
 
             reqHTML = `
                 <div class="flex items-center gap-2">
