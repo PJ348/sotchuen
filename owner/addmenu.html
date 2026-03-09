@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>รายการออเดอร์</title>
+    <link href="/owner/src/output.css" rel="stylesheet">
+    <link rel="icon" href="/owner/img/favicon.ico">
+    <script src="https://kit.fontawesome.com/b118461cf7.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="bg-bg max-w-[1920px] min-h-[1080px] my-auto mx-auto font-kanit overflow-x-hidden">
+
+    <!--Navbar-->
+    <nav class="relative z-[110] bg-white flex flex-row justify-between shadow-lg items-center py-3">
+        <div class="flex items-center gap-7">
+            <img src="/owner/img/logo-rbg.png" rel="img-logo"
+                class="size-25 inset-shadow-2xs shadow-lg ml-15 rounded-full">
+            <div class="flex-col font-medium text-green-logo">
+                <p class="text-[40px]">ร้านสดชื่น</p>
+                <p class="text-2xl">หน้า ม.พะเยา</p>
+            </div>
+        </div>
+
+        <div class="flex gap-15 items-center mr-12">
+            <div>
+                <div class="flex gap-3 text-3xl mb-1">
+                    <i class="fa-solid fa-calendar"></i>
+                    <p class="font-semibold">12 / 30 / 2569</p>
+                </div>
+                <div class="flex gap-3 text-3xl justify-end">
+                    <i class="fa-regular fa-clock mt-1"></i>
+                    <p class="font-semibold text-green-logo">12 : 00 น.</p>
+                </div>
+            </div>
+
+            <button id="closd-order"
+                class=" flex items-center-safe border-5 border-red-order text-red-order rounded-full py-4 px-8 hover:cursor-pointer duration-300 hover:scale-95 transition-colors">
+                <i id="toggle-icon" class="fa-solid fa-pause text-[35px]"></i>
+                <p id="toggle-text" class="font-bold text-[32px]"> ปิดรับออเดอร์</p>
+            </button>
+        </div>
+    </nav>
+
+    <!--หัวเรื่อง-->
+    <header class="flex justify-between ml-20 mt-8 mb-4">
+        <p class="text-[40px] font-semibold items-center">ตั้งค่าเมนู</p>
+        <div class="flex mr-20 gap-10">
+            <button id="save-btn"
+                class="bg-black w-[200px] h-[90px] rounded-4xl y-3 text-[24px] text-white font-semibold hover:scale-95 duration-200 cursor-pointer items-center shadow-lg">
+                <div class="flex items-center justify-center gap-3">
+                    <i class="fa-solid fa-floppy-disk"></i> บันทึก
+                </div>
+            </button>
+            <button id="clear-btn"
+                class="bg-red-order w-[200px] h-[90px] rounded-4xl y-3 text-[24px] text-white font-semibold hover:scale-95 duration-200 cursor-pointer items-center shadow-lg">
+                <div class="flex items-center justify-center gap-3">
+                    <i class="fa-solid fa-trash-can"></i> ล้างข้อมูล
+                </div>
+            </button>
+        </div>
+    </header>
+
+    <!--Crad menu-->
+    <main class="flex justify-center w-full px-15 mb-5">
+        <div class="bg-white w-[1400px] h-auto rounded-[40px] shadow-xl flex p-16 gap-16 border-2 border-gray-100 items-center">
+            
+            <div class="w-1/2 h-[500px] flex flex-col items-center justify-center border-4 border-dashed border-gray-300 rounded-[40px] bg-gray-50 cursor-pointer hover:bg-gray-100 hover:border-gray-400 transition-all duration-300 relative overflow-hidden group" id="image-upload-box">
+                <input type="file" id="menu-image" accept="image/*" class="hidden">
+                <img id="image-preview" src="" class="absolute inset-0 w-full h-full object-cover hidden z-10">
+                
+                <div id="upload-placeholder" class="text-center flex flex-col items-center z-0 transition-transform group-hover:scale-105">
+                    <div class="bg-white p-6 rounded-full shadow-md mb-6">
+                        <i class="fa-solid fa-cloud-arrow-up text-7xl text-gray-400"></i>
+                    </div>
+                    <p class="text-[32px] text-gray-600 font-semibold">คลิกเพื่ออัปโหลดรูปภาพ</p>
+                    <p class="text-2xl text-gray-400 mt-2">ขนาดไฟล์ไม่เกิน 5 MB</p>
+                </div>
+            </div>
+
+            <div class="w-1/2 flex flex-col gap-12 justify-center">
+                <div>
+                    <label class="text-[32px] font-semibold text-gray-800 mb-4 block">ชื่อเมนู <span class="text-red-500">*</span></label>
+                    <input type="text" id="menu-name" placeholder="เช่น ข้าวกะเพราหมูสับไข่ดาว" 
+                        class="w-full text-3xl p-6 border-4 border-gray-200 rounded-3xl focus:outline-none focus:border-orang-menu transition-colors text-gray-700 bg-gray-50 focus:bg-white shadow-inner">
+                </div>
+                <div>
+                    <label class="text-[32px] font-semibold text-gray-800 mb-4 block">ราคา (บาท) <span class="text-red-500">*</span></label>
+                    <input type="number" id="menu-price" placeholder="เช่น 55" min="1" 
+                        class="w-full text-3xl p-6 border-4 border-gray-200 rounded-3xl focus:outline-none focus:border-orang-menu transition-colors text-gray-700 bg-gray-50 focus:bg-white shadow-inner">
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="flex ml-15 gap-10">
+        <!--ปุ่ม HOME-->
+        <button onclick="window.location.href = '/owner/menusetting.html'"
+            class="bg-white rounded-4xl w-[330px] h-[130px] duration-300 hover:scale-90 shadow-lg cursor-pointer">
+            <div class="flex content-center">
+                <div class="bg-black/10 size-[110px] rounded-4xl ml-2 content-center text-center">
+                    <i class="fa-solid fa-arrow-right-from-bracket text-[60px]"></i>
+                </div>
+                <div class="content-center ml-5">
+                    <p class="text-3xl font-semibold">กลับหน้าหลัก</p>
+                    <p class="text-[20px] font-light text-left">HOME</p>
+                </div>
+            </div>
+        </button>
+
+    </footer>
+
+    <!--Confirm modal-->
+    <div id="confirm-modal"
+        class="fixed inset-0 z-[100] bg-black/50 flex items-center justify-center hidden backdrop-blur-sm">
+
+        <div class="bg-white rounded-4xl p-10 w-[800px] h-[650px] shadow-2xl flex flex-col items-center">
+            <div
+                class="flex justify-center bg-red-200/30 rounded-full size-[159px] mt-10 mb-6 items-center content-center">
+                <i class="fa-solid fa-circle-exclamation text-red-order text-[89px]"></i>
+            </div>
+
+            <h2 class="text-[40px] font-bold text-gray-800 mb-4">ยืนยันการปิดรับออเดอร์?</h2>
+            <p class="text-3xl font-normal text-gray-500 mb-10 text-center">หากปิดรับออเดอร์<br>
+                ลูกค้าจะไม่สามารถสั่งอาหารผ่านระบบได้ชั่วคราว<br>ต้องการดำเนินการต่อใช่หรือไม่?
+            </p>
+
+            <div class="flex gap-6 w-full">
+                <button id="confirm-btn"
+                    class="flex-1 rounded-full text-3xl font-semibold border-4 text-white bg-red-order duration-300 cursor-pointer hover:scale-95 w-[331px] h-[97px]">
+                    ยืนยันปิดออเดอร์
+                </button>
+                <button id="cancel-btn"
+                    class="flex-1 rounded-full text-3xl font-semibold bg-black/10 text-red-order hover:bg-gray-100 duration-300 cursor-pointer hover:scale-95 w-[331px] h-[97px]">
+                    ยกเลิก
+                </button>
+            </div>
+        </div>
+        <script src="/owner/closeorder.js"></script>
+        <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const uploadBox = document.getElementById('image-upload-box');
+            const fileInput = document.getElementById('menu-image');
+            const imgPreview = document.getElementById('image-preview');
+            const placeholder = document.getElementById('upload-placeholder');
+            
+            const menuName = document.getElementById('menu-name');
+            const menuPrice = document.getElementById('menu-price');
+            
+            const saveBtn = document.getElementById('save-btn');
+            const clearBtn = document.getElementById('clear-btn');
+
+            let uploadedImageBase64 = null; // ตัวแปรเก็บรูปภาพที่แปลงร่างแล้ว
+
+            // 1. กดที่กล่องสี่เหลี่ยม -> เปิดหน้าต่างเลือกไฟล์
+            uploadBox.addEventListener('click', () => {
+                fileInput.click();
+            });
+
+            // 2. เมื่อผู้ใช้เลือกไฟล์รูปภาพ
+            fileInput.addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    // ดัก Error 1: ต้องเป็นไฟล์รูปเท่านั้น
+                    if (!file.type.startsWith('image/')) {
+                        alert('⚠️ กรุณาอัปโหลดไฟล์รูปภาพเท่านั้นครับ (เช่น .jpg, .png)');
+                        fileInput.value = '';
+                        return;
+                    }
+                    // ดัก Error 2: ขนาดไฟล์ห้ามเกิน 5MB
+                    if (file.size > 5 * 1024 * 1024) {
+                        alert('⚠️ ขนาดไฟล์รูปภาพใหญ่เกินไป (จำกัดไม่เกิน 5 MB) ครับ');
+                        fileInput.value = '';
+                        return;
+                    }
+
+                    // แปลงรูปภาพให้แสดงโชว์บนหน้าเว็บ (Base64)
+                    const reader = new FileReader();
+                    reader.onload = (event) => {
+                        uploadedImageBase64 = event.target.result;
+                        imgPreview.src = uploadedImageBase64;
+                        imgPreview.classList.remove('hidden');
+                        placeholder.classList.add('hidden');
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            // 3. เมื่อกดปุ่ม "บันทึก"
+            saveBtn.addEventListener('click', () => {
+                const nameValue = menuName.value.trim();
+                const priceValue = parseFloat(menuPrice.value);
+
+                // ดัก Error 3: ตรวจสอบข้อมูลก่อนเซฟ
+                if (!uploadedImageBase64) {
+                    alert('⚠️ กรุณาอัปโหลดรูปภาพเมนูก่อนบันทึกครับ');
+                    return;
+                }
+                if (!nameValue) {
+                    alert('⚠️ กรุณากรอก "ชื่อเมนู" ก่อนบันทึกครับ');
+                    menuName.focus();
+                    return;
+                }
+                if (isNaN(priceValue) || priceValue <= 0) {
+                    alert('⚠️ กรุณากรอก "ราคา" ให้ถูกต้อง (ต้องมากกว่า 0 บาท) ครับ');
+                    menuPrice.focus();
+                    return;
+                }
+
+                // สร้าง Object เตรียมเก็บเข้า Database (ใช้ localStorage จำลอง)
+                const newMenu = {
+                    id: Date.now(), // สร้าง ID ไม่ซ้ำกันจากเวลาปัจจุบัน
+                    image: uploadedImageBase64,
+                    name: nameValue,
+                    price: priceValue,
+                    status: 'เปิดรับออเดอร์'
+                };
+
+                // ดึงข้อมูลเมนูเก่ามา (ถ้ามี) แล้วต่อท้ายด้วยเมนูใหม่
+                let existingMenus = JSON.parse(localStorage.getItem('myRestaurantMenus')) || [];
+                existingMenus.push(newMenu);
+                localStorage.setItem('myRestaurantMenus', JSON.stringify(existingMenus));
+
+                // เด้ง Alert แจ้งเตือนความสำเร็จ
+                alert(`✅ เพิ่มเมนู "${nameValue}" ราคา ${priceValue} บาท เสร็จสิ้น!`);
+                
+                // พาไปหน้า menusetting.html
+                window.location.href = '/owner/menusetting.html';
+            });
+
+            // 4. เมื่อกดปุ่ม "ล้างข้อมูล"
+            clearBtn.addEventListener('click', () => {
+                if(confirm('ต้องการล้างข้อมูลที่กรอกไว้ทั้งหมดหรือไม่?')) {
+                    menuName.value = '';
+                    menuPrice.value = '';
+                    fileInput.value = '';
+                    uploadedImageBase64 = null;
+                    imgPreview.src = '';
+                    imgPreview.classList.add('hidden');
+                    placeholder.classList.remove('hidden');
+                }
+            });
+        });
+    </script>
+
+    </div>
+
+</body>
+
+</html>

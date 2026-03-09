@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ตั้งค่าเมนู</title>
+    <link href="/owner/src/output.css" rel="stylesheet">
+    <link rel="icon" href="/owner/img/favicon.ico">
+    <script src="https://kit.fontawesome.com/b118461cf7.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: none;
+            /* Firefox */
+        }
+    </style>
+</head>
+
+<body class="bg-bg max-w-[1920px] min-h-[1080px] my-auto mx-auto font-kanit overflow-x-hidden">
+
+    <!--Navbar-->
+    <nav class="relative z-[110] bg-white flex flex-row justify-between shadow-lg items-center py-3">
+        <div class="flex items-center gap-7">
+            <img src="/owner/img/logo-rbg.png" rel="img-logo"
+                class="size-25 inset-shadow-2xs shadow-lg ml-15 rounded-full">
+            <div class="flex-col font-medium text-green-logo">
+                <p class="text-[40px]">ร้านสดชื่น</p>
+                <p class="text-2xl">หน้า ม.พะเยา</p>
+            </div>
+        </div>
+
+        <div class="flex gap-15 items-center mr-12">
+            <div>
+                <div class="flex gap-3 text-3xl mb-1">
+                    <i class="fa-solid fa-calendar"></i>
+                    <p class="font-semibold">12 / 30 / 2569</p>
+                </div>
+                <div class="flex gap-3 text-3xl justify-end">
+                    <i class="fa-regular fa-clock mt-1"></i>
+                    <p class="font-semibold text-green-logo">12 : 00 น.</p>
+                </div>
+            </div>
+
+            <button id="closd-order"
+                class=" flex items-center-safe border-5 border-red-order text-red-order rounded-full py-4 px-8 hover:cursor-pointer duration-300 hover:scale-95 transition-colors">
+                <i id="toggle-icon" class="fa-solid fa-pause text-[35px]"></i>
+                <p id="toggle-text" class="font-bold text-[32px]"> ปิดรับออเดอร์</p>
+            </button>
+        </div>
+    </nav>
+
+    <!--หัวเรื่อง-->
+    <header class="flex justify-between mt-6 items-center mb-5">
+        <h1 class="text-[40px] font-semibold ml-15">จัดการเมนู</h1>
+        <button id="search-btn" onclick="window.location.href='/owner/addmenu.html'"
+            class="bg-orang-menu w-[200px] h-[90px] rounded-3xl y-3 text-[24px] text-white font-semibold mr-20 hover:scale-95 duration-200 cursor-pointer items-center">
+            <div class="flex items-center justify-center">
+                <i class="fa-solid fa-plus text-4xl"></i>
+                &nbsp;เพิ่มเมนู
+            </div>
+        </button>
+    </header>
+
+    <div class="mb-4">
+        <div class="grid grid-cols-[80px_180px_minmax(250px,1fr)_220px_240px_240px_240px] items-center bg-white w-full h-[60px] rounded-2xl shadow-sm pl-30 pr-20 gap-6">
+            <h1 class="text-2xl font-semibold text-center">ลำดับ</h1>
+            <h1 class="text-2xl font-semibold text-center">รูปภาพ</h1>
+            <h1 class="text-2xl font-semibold text-left">ชื่อ/ราคา</h1>
+            <h1 class="text-2xl font-semibold text-center">สถานะ</h1>
+            <h1 class="text-2xl font-semibold text-center">เปลี่ยนสถานะ</h1>
+            <h1 class="text-2xl font-semibold text-center">ซ่อนเมนู</h1>
+            <h1 class="text-2xl font-semibold text-center">จัดการเมนู</h1>
+        </div>
+    </div>
+
+    <main id="card_setting" class="flex flex-col w-full h-[545px] overflow-y-auto select-none pl-20 mb-5 no-scrollbar gap-4">
+        <!--card1-->
+        <div class="grid grid-cols-[80px_180px_minmax(250px,1fr)_220px_240px_240px_240px] bg-white w-[1803px] h-[200px] rounded-3xl shadow-lg border-2 border-gray-300 items-center px-10 gap-6 shrink-0">
+            <h1 class="text-[40px] font-semibold text-center">01</h1>
+            <div class="flex justify-center">
+                <img src="/owner/img/food-menu1.jpg" class="size-[170px] rounded-3xl object-cover">
+            </div>
+            <div class="flex flex-col">
+                <p class="text-3xl font-semibold truncate">ข้าวห่อหมกทะเล</p>
+                <p class="text-[24px] font-medium text-orang-menu">55 <span class="text-black">บาท</span></p>
+            </div>
+            <div class="flex justify-center">
+                <div class="bg-green-logo/30 text-green-logo text-2xl font-semibold rounded-3xl py-3 px-4 text-center w-full">เปิดรับออเดอร์</div>
+            </div>
+            <button class="flex bg-green-logo w-full h-[60px] rounded-3xl text-2xl font-semibold items-center justify-center text-white gap-3 shadow-lg hover:scale-95 duration-200 cursor-pointer">
+                <i class="fa-solid fa-circle-check"></i>
+                เปลี่ยนสถานะ
+            </button>
+            <button class="flex bg-black w-full h-[60px] rounded-3xl text-2xl font-semibold items-center justify-center text-white gap-3 shadow-lg hover:scale-95 duration-200 cursor-pointer">
+                <i class="fa-solid fa-eye-slash"></i>
+                ซ่อนเมนู
+            </button>
+            <button class="flex w-full h-[60px] rounded-3xl text-2xl border-4 border-orange-400 font-semibold items-center justify-center text-orang-menu gap-3 shadow-lg hover:scale-95 duration-200 cursor-pointer">
+                <i class="fa-solid fa-gear"></i>
+                จัดการ
+            </button>
+        </div>
+        <!--card2-->
+        <div class="grid grid-cols-[80px_180px_minmax(250px,1fr)_220px_240px_240px_240px] bg-white w-[1803px] h-[200px] rounded-3xl shadow-lg border-2 border-gray-300 items-center px-10 gap-6 shrink-0">
+            <h1 class="text-[40px] font-semibold text-center">02</h1>
+            <div class="flex justify-center">
+                <img src="/owner/img/food-menu8.jpg" class="size-[170px] rounded-3xl object-cover">
+            </div>
+            <div class="flex flex-col">
+                <p class="text-3xl font-semibold truncate">ข้าวหน้าหมูเทริยากิ</p>
+                <p class="text-[24px] font-medium text-orang-menu">55 <span class="text-black">บาท</span></p>
+            </div>
+            <div class="flex justify-center">
+                <div class="bg-green-logo/30 text-green-logo text-2xl font-semibold rounded-3xl py-3 px-4 text-center w-full">เปิดรับออเดอร์</div>
+            </div>
+            <button class="flex bg-green-logo w-full h-[60px] rounded-3xl text-2xl font-semibold items-center justify-center text-white gap-3 shadow-lg hover:scale-95 duration-200 cursor-pointer">
+                <i class="fa-solid fa-circle-check"></i>
+                เปลี่ยนสถานะ
+            </button>
+            <button class="flex bg-black w-full h-[60px] rounded-3xl text-2xl font-semibold items-center justify-center text-white gap-3 shadow-lg hover:scale-95 duration-200 cursor-pointer">
+                <i class="fa-solid fa-eye-slash"></i>
+                ซ่อนเมนู
+            </button>
+            <button class="flex w-full h-[60px] rounded-3xl text-2xl border-4 border-orange-400 font-semibold items-center justify-center text-orang-menu gap-3 shadow-lg hover:scale-95 duration-200 cursor-pointer">
+                <i class="fa-solid fa-gear"></i>
+                จัดการ
+            </button>
+        </div>
+        <!--card3-->
+        <div class="grid grid-cols-[80px_180px_minmax(250px,1fr)_220px_240px_240px_240px] bg-white w-[1803px] h-[200px] rounded-3xl shadow-lg border-2 border-gray-300 items-center px-10 gap-6 shrink-0">
+            <h1 class="text-[40px] font-semibold text-center">03</h1>
+            <div class="flex justify-center">
+                <img src="/owner/img/food-menu5.jpg" class="size-[170px] rounded-3xl object-cover">
+            </div>
+            <div class="flex flex-col">
+                <p class="text-3xl font-semibold truncate">ข้าวหมูสับคั่วพริกเกลือ</p>
+                <p class="text-[24px] font-medium text-orang-menu">45 <span class="text-black">บาท</span></p>
+            </div>
+            <div class="flex justify-center">
+                <div class="bg-green-logo/30 text-green-logo text-2xl font-semibold rounded-3xl py-3 px-4 text-center w-full">เปิดรับออเดอร์</div>
+            </div>
+            <button class="flex bg-green-logo w-full h-[60px] rounded-3xl text-2xl font-semibold items-center justify-center text-white gap-3 shadow-lg hover:scale-95 duration-200 cursor-pointer">
+                <i class="fa-solid fa-circle-check"></i>
+                เปลี่ยนสถานะ
+            </button>
+            <button class="flex bg-black w-full h-[60px] rounded-3xl text-2xl font-semibold items-center justify-center text-white gap-3 shadow-lg hover:scale-95 duration-200 cursor-pointer">
+                <i class="fa-solid fa-eye-slash"></i>
+                ซ่อนเมนู
+            </button>
+            <button class="flex w-full h-[60px] rounded-3xl text-2xl border-4 border-orange-400 font-semibold items-center justify-center text-orang-menu gap-3 shadow-lg hover:scale-95 duration-200 cursor-pointer">
+                <i class="fa-solid fa-gear"></i>
+                จัดการ
+            </button>
+        </div>
+        <!--card4-->
+        <div class="grid grid-cols-[80px_180px_minmax(250px,1fr)_220px_240px_240px_240px] bg-white w-[1803px] h-[200px] rounded-3xl shadow-lg border-2 border-gray-300 items-center px-10 gap-6 shrink-0">
+            <h1 class="text-[40px] font-semibold text-center">04</h1>
+            <div class="flex justify-center">
+                <img src="/owner/img/food-menu7.jpg" class="size-[170px] rounded-3xl object-cover">
+            </div>
+            <div class="flex flex-col">
+                <p class="text-3xl font-semibold truncate">ข้าวทะเลผัดผงกะหรี่</p>
+                <p class="text-[24px] font-medium text-orang-menu">55 <span class="text-black">บาท</span></p>
+            </div>
+            <div class="flex justify-center">
+                <div class="bg-green-logo/30 text-green-logo text-2xl font-semibold rounded-3xl py-3 px-4 text-center w-full">เปิดรับออเดอร์</div>
+            </div>
+            <button class="flex bg-green-logo w-full h-[60px] rounded-3xl text-2xl font-semibold items-center justify-center text-white gap-3 shadow-lg hover:scale-95 duration-200 cursor-pointer">
+                <i class="fa-solid fa-circle-check"></i>
+                เปลี่ยนสถานะ
+            </button>
+            <button class="flex bg-black w-full h-[60px] rounded-3xl text-2xl font-semibold items-center justify-center text-white gap-3 shadow-lg hover:scale-95 duration-200 cursor-pointer">
+                <i class="fa-solid fa-eye-slash"></i>
+                ซ่อนเมนู
+            </button>
+            <button class="flex w-full h-[60px] rounded-3xl text-2xl border-4 border-orange-400 font-semibold items-center justify-center text-orang-menu gap-3 shadow-lg hover:scale-95 duration-200 cursor-pointer">
+                <i class="fa-solid fa-gear"></i>
+                จัดการ
+            </button>
+        </div>
+        <!--card5-->
+        <div class="grid grid-cols-[80px_180px_minmax(250px,1fr)_220px_240px_240px_240px] bg-white w-[1803px] h-[200px] rounded-3xl shadow-lg border-2 border-gray-300 items-center px-10 gap-6 shrink-0">
+            <h1 class="text-[40px] font-semibold text-center">05</h1>
+            <div class="flex justify-center">
+                <img src="/owner/img/food-menu2.jpg" class="size-[170px] rounded-3xl object-cover">
+            </div>
+            <div class="flex flex-col">
+                <p class="text-3xl font-semibold truncate">ข้าวผัดหมูย่าง</p>
+                <p class="text-[24px] font-medium text-orang-menu">55 <span class="text-black">บาท</span></p>
+            </div>
+            <div class="flex justify-center">
+                <div class="bg-green-logo/30 text-green-logo text-2xl font-semibold rounded-3xl py-3 px-4 text-center w-full">เปิดรับออเดอร์</div>
+            </div>
+            <button class="flex bg-green-logo w-full h-[60px] rounded-3xl text-2xl font-semibold items-center justify-center text-white gap-3 shadow-lg hover:scale-95 duration-200 cursor-pointer">
+                <i class="fa-solid fa-circle-check"></i>
+                เปลี่ยนสถานะ
+            </button>
+            <button class="flex bg-black w-full h-[60px] rounded-3xl text-2xl font-semibold items-center justify-center text-white gap-3 shadow-lg hover:scale-95 duration-200 cursor-pointer">
+                <i class="fa-solid fa-eye-slash"></i>
+                ซ่อนเมนู
+            </button>
+            <button class="flex w-full h-[60px] rounded-3xl text-2xl border-4 border-orange-400 font-semibold items-center justify-center text-orang-menu gap-3 shadow-lg hover:scale-95 duration-200 cursor-pointer">
+                <i class="fa-solid fa-gear"></i>
+                จัดการ
+            </button>
+        </div>
+        <!--card6-->
+        <div class="grid grid-cols-[80px_180px_minmax(250px,1fr)_220px_240px_240px_240px] bg-white w-[1803px] h-[200px] rounded-3xl shadow-lg border-2 border-gray-300 items-center px-10 gap-6 shrink-0">
+            <h1 class="text-[40px] font-semibold text-center">06</h1>
+            <div class="flex justify-center">
+                <img src="/owner/img/food-menu6.jpg" class="size-[170px] rounded-3xl object-cover">
+            </div>
+            <div class="flex flex-col">
+                <p class="text-3xl font-semibold truncate">ข้าวเจียวหมูสับ/กุ้ง</p>
+                <p class="text-[24px] font-medium text-orang-menu">40 <span class="text-black">บาท</span></p>
+            </div>
+            <div class="flex justify-center">
+                <div class="bg-green-logo/30 text-green-logo text-2xl font-semibold rounded-3xl py-3 px-4 text-center w-full">เปิดรับออเดอร์</div>
+            </div>
+            <button class="flex bg-green-logo w-full h-[60px] rounded-3xl text-2xl font-semibold items-center justify-center text-white gap-3 shadow-lg hover:scale-95 duration-200 cursor-pointer">
+                <i class="fa-solid fa-circle-check"></i>
+                เปลี่ยนสถานะ
+            </button>
+            <button class="flex bg-black w-full h-[60px] rounded-3xl text-2xl font-semibold items-center justify-center text-white gap-3 shadow-lg hover:scale-95 duration-200 cursor-pointer">
+                <i class="fa-solid fa-eye-slash"></i>
+                ซ่อนเมนู
+            </button>
+            <button class="flex w-full h-[60px] rounded-3xl text-2xl border-4 border-orange-400 font-semibold items-center justify-center text-orang-menu gap-3 shadow-lg hover:scale-95 duration-200 cursor-pointer">
+                <i class="fa-solid fa-gear"></i>
+                จัดการ
+            </button>
+        </div>
+        <!--card7-->
+        <div class="grid grid-cols-[80px_180px_minmax(250px,1fr)_220px_240px_240px_240px] bg-white w-[1803px] h-[200px] rounded-3xl shadow-lg border-2 border-gray-300 items-center px-10 gap-6 shrink-0">
+            <h1 class="text-[40px] font-semibold text-center">07</h1>
+            <div class="flex justify-center">
+                <img src="/owner/img/food.jpg" class="size-[170px] rounded-3xl object-cover">
+            </div>
+            <div class="flex flex-col">
+                <p class="text-3xl font-semibold truncate">ข้าวกะเพราหมูสับ/หมูชิ้น</p>
+                <p class="text-[24px] font-medium text-orang-menu">40 <span class="text-black">บาท</span></p>
+            </div>
+            <div class="flex justify-center">
+                <div class="bg-green-logo/30 text-green-logo text-2xl font-semibold rounded-3xl py-3 px-4 text-center w-full">เปิดรับออเดอร์</div>
+            </div>
+            <button class="flex bg-green-logo w-full h-[60px] rounded-3xl text-2xl font-semibold items-center justify-center text-white gap-3 shadow-lg hover:scale-95 duration-200 cursor-pointer">
+                <i class="fa-solid fa-circle-check"></i>
+                เปลี่ยนสถานะ
+            </button>
+            <button class="flex bg-black w-full h-[60px] rounded-3xl text-2xl font-semibold items-center justify-center text-white gap-3 shadow-lg hover:scale-95 duration-200 cursor-pointer">
+                <i class="fa-solid fa-eye-slash"></i>
+                ซ่อนเมนู
+            </button>
+            <button class="flex w-full h-[60px] rounded-3xl text-2xl border-4 border-orange-400 font-semibold items-center justify-center text-orang-menu gap-3 shadow-lg hover:scale-95 duration-200 cursor-pointer">
+                <i class="fa-solid fa-gear"></i>
+                จัดการ
+            </button>
+        </div>
+        <!--card8-->
+        <div class="grid grid-cols-[80px_180px_minmax(250px,1fr)_220px_240px_240px_240px] bg-white w-[1803px] h-[200px] rounded-3xl shadow-lg border-2 border-gray-300 items-center px-10 gap-6 shrink-0">
+            <h1 class="text-[40px] font-semibold text-center">08</h1>
+            <div class="flex justify-center">
+                <img src="/owner/img/food-menu3.jpg" class="size-[170px] rounded-3xl object-cover">
+            </div>
+            <div class="flex flex-col">
+                <p class="text-3xl font-semibold truncate">ข้าวไข่ขยี้ปลากระป๋อง</p>
+                <p class="text-[24px] font-medium text-orang-menu">55 <span class="text-black">บาท</span></p>
+            </div>
+            <div class="flex justify-center">
+                <div class="bg-green-logo/30 text-green-logo text-2xl font-semibold rounded-3xl py-3 px-4 text-center w-full">เปิดรับออเดอร์</div>
+            </div>
+            <button class="flex bg-green-logo w-full h-[60px] rounded-3xl text-2xl font-semibold items-center justify-center text-white gap-3 shadow-lg hover:scale-95 duration-200 cursor-pointer">
+                <i class="fa-solid fa-circle-check"></i>
+                เปลี่ยนสถานะ
+            </button>
+            <button class="flex bg-black w-full h-[60px] rounded-3xl text-2xl font-semibold items-center justify-center text-white gap-3 shadow-lg hover:scale-95 duration-200 cursor-pointer">
+                <i class="fa-solid fa-eye-slash"></i>
+                ซ่อนเมนู
+            </button>
+            <button class="flex w-full h-[60px] rounded-3xl text-2xl border-4 border-orange-400 font-semibold items-center justify-center text-orang-menu gap-3 shadow-lg hover:scale-95 duration-200 cursor-pointer">
+                <i class="fa-solid fa-gear"></i>
+                จัดการ
+            </button>
+        </div>
+
+    </main>
+
+    <footer class="flex justify-center my-5">
+
+        <div id="btn-home" 
+            class="bg-white border-gray-100 border-2 w-[1010px] h-[150px] rounded-4xl shadow-2xl content-center">
+            <div class="flex gap-10">
+                <!--Home page-->
+                <button onclick="window.location.href = '/owner/index.html'"
+                    class="bg-white w-auto h-auto rounded-4xl p-4 content-center hover:shadow-xl text-center duration-300 hover:scale-90 ml-5">
+                    <i class="fa-solid fa-house text-5xl"></i>
+                    <p class="text-3xl font-medium">หน้าจอหลัก</p>
+                </button>
+
+
+                <!--สรุปยอดขาย-->
+                <button onclick="window.location.href = '/owner/sumary.html'"
+                    class="bg-white w-auto h-auto rounded-4xl p-4 content-center hover:shadow-xl text-center duration-300 hover:scale-90">
+                    <i class="fa-solid fa-clipboard-list text-[45px] mb-3"></i>
+                    <p class="text-3xl font-medium">สรุปยอดขาย</p>
+                </button>
+                
+
+                <!--ตั้งค่าเมนู-->
+                <button id="btn-summary"
+                    class="flex w-[300px] h-[130px] bg-green-logo rounded-4xl content-center p-3 duration-300 hover:scale-90">
+                    <div class="bg-white/30 size-[110px] rounded-4xl content-center text-center">
+                        <i class="fa-solid fa-sliders text-[45px] mb-3 text-white"></i>
+                    </div>
+                    <div class="flex-col content-center ml-5 text-white">
+                        <p class="text-3xl font-semibold text-left">จัดการเมนู</p>
+                        <p class="text-[20px] font-light text-left">รายการเมนู</p>
+                    </div>
+                </button>
+
+                <!--ตั้งค่าเ-->
+                <button onclick="window.location.href = '/owner/datetimesetting.html'"
+                    class="bg-white w-auto h-auto rounded-4xl p-4 content-center hover:shadow-xl text-center duration-300 hover:scale-90">
+                    <i class="fa-solid fa-calendar text-[45px] mb-3"></i>
+                    <p class="text-3xl font-medium">วันที่ และ เวลา</p>
+                </button>
+
+            </div>
+        </div>
+
+    </footer>
+
+    <!--Confirm modal-->
+    <div id="confirm-modal"
+        class="fixed inset-0 z-[100] bg-black/50 flex items-center justify-center hidden backdrop-blur-sm">
+
+        <div class="bg-white rounded-4xl p-10 w-[800px] h-[650px] shadow-2xl flex flex-col items-center">
+            <div
+                class="flex justify-center bg-red-200/30 rounded-full size-[159px] mt-10 mb-6 items-center content-center">
+                <i class="fa-solid fa-circle-exclamation text-red-order text-[89px]"></i>
+            </div>
+
+            <h2 class="text-[40px] font-bold text-gray-800 mb-4">ยืนยันการปิดรับออเดอร์?</h2>
+            <p class="text-3xl font-normal text-gray-500 mb-10 text-center">หากปิดรับออเดอร์<br>
+                ลูกค้าจะไม่สามารถสั่งอาหารผ่านระบบได้ชั่วคราว<br>ต้องการดำเนินการต่อใช่หรือไม่?</p>
+
+            <div class="flex gap-6 w-full">
+                <button id="confirm-btn"
+                    class="flex-1 rounded-full text-3xl font-semibold border-4 text-white bg-red-order duration-300 cursor-pointer hover:scale-95 w-[331px] h-[97px]">
+                    ยืนยันปิดออเดอร์
+                </button>
+                <button id="cancel-btn"
+                    class="flex-1 rounded-full text-3xl font-semibold bg-black/10 text-red-order hover:bg-gray-100 duration-300 cursor-pointer hover:scale-95 w-[331px] h-[97px]">
+                    ยกเลิก
+                </button>
+            </div>
+        </div>
+        <script src="/owner/closeorder.js"></script>
+        <script>
+            const cancelModal = document.getElementById('confirm-modal');
+            const btnYes = document.getElementById('confirm-btn');
+            const btnNo = document.getElementById('cancel-btn');
+
+            // --- 1. กรณีที่กดยืนยัน (เปลี่ยนไปหน้าเว็บใหม่) ---
+            btnYes.addEventListener('click', () => {
+                // ปิด Modal ก่อน (เพื่อความเนียนก่อนภาพตัด)
+                cancelModal.classList.add('hidden');
+
+                window.location.href = '/owner/webclosedorder.html';
+            });
+
+            // --- 2. กรณีที่กดยกเลิก (แค่ปิด Modal ไม่ต้องทำอะไรเพิ่ม) ---
+            btnNo.addEventListener('click', () => {
+                // สั่งใส่คลาส hidden เพื่อซ่อนหน้าต่าง Modal กลับไปแค่นั้นเลยครับ
+                cancelModal.classList.add('hidden');
+            });
+        </script>
+
+    </div>
+
+    <script>
+        // รอให้โหลดโครงสร้าง HTML เสร็จก่อน
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // 1. ดึงการ์ดทุกใบที่อยู่ใน <main id="card_setting">
+            const cards = document.querySelectorAll('#card_setting > div');
+            
+            if (cards.length > 0) {
+                // 2. สั่งให้การ์ดทุกใบ "โปร่งใส (opacity-0)" และเตรียมแอนิเมชัน Fade ไว้
+                cards.forEach(card => {
+                    card.classList.add('opacity-0', 'transition-opacity', 'duration-700', 'ease-in-out');
+                });
+
+                // 3. ใช้ลูปหน่วงเวลาให้การ์ดค่อยๆ สว่างขึ้นมาทีละใบ
+                cards.forEach((card, index) => {
+                    setTimeout(() => {
+                        // ถอดความโปร่งใสออก การ์ดจะค่อยๆ ชัดขึ้นมา 100%
+                        card.classList.remove('opacity-0');
+                        card.classList.add('opacity-100');
+                    }, 500 + (index * 150)); // ใบแรกมาตอน 100ms, ใบต่อไปบวกเพิ่มทีละ 150ms
+                });
+            }
+        });
+    </script>
+
+    <script>
+        // รอให้โหลดโครงสร้าง HTML เสร็จก่อน
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            const cards = document.querySelectorAll('#card_setting > div');
+            
+            if (cards.length > 0) {
+                cards.forEach((card, index) => {
+                    // --- 1. แอนิเมชัน Fade-in ตอนเปิดหน้า (ของเดิม) ---
+                    card.classList.add('opacity-0', 'transition-opacity', 'duration-700', 'ease-in-out');
+                    setTimeout(() => {
+                        card.classList.remove('opacity-0');
+                        card.classList.add('opacity-100');
+                    }, 500 + (index * 150));
+
+                    // ==========================================
+                    // 🌟 2. ระบบเปลี่ยนสถานะ (เปิด/ปิดรับออเดอร์)
+                    // ==========================================
+                    // อ้างอิง Element ตามลำดับคอลัมน์ใน Grid (ชัวร์และแม่นยำที่สุด)
+                    const statusBadge = card.children[3].querySelector('div'); // ป้ายสถานะ
+                    const statusBtn = card.children[4]; // ปุ่มเปลี่ยนสถานะ
+                    
+                    if (statusBtn && statusBadge) {
+                        let isOpened = true; // ตั้งค่าเริ่มต้นให้เปิดรับออเดอร์
+                        
+                        statusBtn.addEventListener('click', () => {
+                            isOpened = !isOpened; // สลับสถานะ
+                            
+                            if (!isOpened) {
+                                // ---- กรณี: ปิดรับออเดอร์ (สีแดง) ----
+                                statusBadge.innerText = 'ปิดรับออเดอร์';
+                                statusBadge.classList.replace('bg-green-logo/30', 'bg-red-500/30');
+                                statusBadge.classList.replace('text-green-logo', 'text-red-500');
+                                
+                                statusBtn.classList.replace('bg-green-logo', 'bg-red-500');
+                                statusBtn.innerHTML = '<i class="fa-solid fa-circle-xmark"></i> เปลี่ยนสถานะ';
+                            } else {
+                                // ---- กรณี: เปิดรับออเดอร์ (สีเขียว) ----
+                                statusBadge.innerText = 'เปิดรับออเดอร์';
+                                statusBadge.classList.replace('bg-red-500/30', 'bg-green-logo/30');
+                                statusBadge.classList.replace('text-red-500', 'text-green-logo');
+                                
+                                statusBtn.classList.replace('bg-red-500', 'bg-green-logo');
+                                statusBtn.innerHTML = '<i class="fa-solid fa-circle-check"></i> เปลี่ยนสถานะ';
+                            }
+                        });
+                    }
+
+                    // ==========================================
+                    // 🌟 3. ระบบซ่อนเมนู (พื้นหลังดำบังรูปภาพ)
+                    // ==========================================
+                    const hideBtn = card.children[5]; // ปุ่มซ่อนเมนู
+                    const imgEl = card.children[1].querySelector('img'); // รูปภาพอาหาร
+                    
+                    if (hideBtn && imgEl) {
+                        // ใช้ JS สร้างกล่องมาครอบรูปภาพเพื่อใส่เอฟเฟกต์ (ไม่ต้องเหนื่อยแก้ HTML)
+                        const wrapper = document.createElement('div');
+                        wrapper.className = 'relative size-[170px] rounded-3xl overflow-hidden';
+                        
+                        // ย้ายรูปภาพเข้าไปใน Wrapper
+                        imgEl.parentNode.insertBefore(wrapper, imgEl);
+                        wrapper.appendChild(imgEl);
+                        
+                        // สร้างแผ่นสีดำ (Overlay) และไอคอนปิดตา วางซ้อนทับไว้ (ซ่อนไว้ก่อนด้วย opacity-0)
+                        const overlay = document.createElement('div');
+                        overlay.className = 'absolute inset-0 bg-black/10 flex items-center justify-center opacity-0 transition-opacity duration-300 pointer-events-none';
+                        overlay.innerHTML = '<i class="fa-solid fa-eye-slash text-white text-[60px]"></i>';
+                        wrapper.appendChild(overlay);
+
+                        let isHidden = false; // ตั้งค่าเริ่มต้นให้เมนูไม่ถูกซ่อน
+                        
+                        hideBtn.addEventListener('click', () => {
+                            isHidden = !isHidden; // สลับสถานะซ่อน
+                            
+                            if (isHidden) {
+                                // ---- กรณี: กดซ่อนเมนู ----
+                                overlay.classList.remove('opacity-0'); // โชว์แผ่นสีดำ
+                                hideBtn.innerHTML = '<i class="fa-solid fa-eye"></i> แสดงเมนู'; // เปลี่ยนข้อความปุ่ม
+                                hideBtn.classList.replace('bg-black', 'bg-gray-500'); // เปลี่ยนสีปุ่มให้ดูซอฟต์ลง
+                            } else {
+                                // ---- กรณี: ยกเลิกซ่อนเมนู ----
+                                overlay.classList.add('opacity-0'); // ซ่อนแผ่นสีดำ
+                                hideBtn.innerHTML = '<i class="fa-solid fa-eye-slash"></i> ซ่อนเมนู';
+                                hideBtn.classList.replace('bg-gray-500', 'bg-black'); // กลับไปสีดำเข้มเหมือนเดิม
+                            }
+                        });
+                    }
+                });
+            }
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cardContainer = document.getElementById('card_setting');
+            
+            // ==========================================
+            // 🌟 1. ดึงข้อมูลเมนูใหม่จาก localStorage มาสร้างการ์ด
+            // ==========================================
+            const savedMenus = JSON.parse(localStorage.getItem('myRestaurantMenus')) || [];
+            let currentCount = document.querySelectorAll('#card_setting > div').length;
+
+            savedMenus.forEach(menu => {
+                currentCount++;
+                const menuNumber = String(currentCount).padStart(2, '0');
+
+                // สร้างโครงสร้าง HTML ให้เหมือนการ์ดเดิมเป๊ะๆ
+                const cardHTML = `
+                    <div class="grid grid-cols-[80px_180px_minmax(250px,1fr)_220px_240px_240px_240px] bg-white w-[1803px] h-[200px] rounded-3xl shadow-lg border-2 border-gray-300 items-center px-10 gap-6 shrink-0">
+                        <h1 class="text-[40px] font-semibold text-center">${menuNumber}</h1>
+                        <div class="flex justify-center">
+                            <img src="${menu.image}" class="size-[170px] rounded-3xl object-cover">
+                        </div>
+                        <div class="flex flex-col">
+                            <p class="text-3xl font-semibold truncate">${menu.name}</p>
+                            <p class="text-[24px] font-medium text-orang-menu">${menu.price} <span class="text-black">บาท</span></p>
+                        </div>
+                        <div class="flex justify-center">
+                            <div class="bg-green-logo/30 text-green-logo text-2xl font-semibold rounded-3xl py-3 px-4 text-center w-full">เปิดรับออเดอร์</div>
+                        </div>
+                        <button class="flex bg-green-logo w-full h-[60px] rounded-3xl text-2xl font-semibold items-center justify-center text-white gap-3 shadow-lg hover:scale-95 duration-200 cursor-pointer">
+                            <i class="fa-solid fa-circle-check"></i>
+                            เปลี่ยนสถานะ
+                        </button>
+                        <button class="flex bg-black w-full h-[60px] rounded-3xl text-2xl font-semibold items-center justify-center text-white gap-3 shadow-lg hover:scale-95 duration-200 cursor-pointer">
+                            <i class="fa-solid fa-eye-slash"></i>
+                            ซ่อนเมนู
+                        </button>
+                        <button data-id="${menu.id}" class="flex w-full h-[60px] rounded-3xl text-2xl border-4 border-orange-400 font-semibold items-center justify-center text-orang-menu gap-3 shadow-lg hover:scale-95 duration-200 cursor-pointer">
+                            <i class="fa-solid fa-gear"></i>
+                            จัดการ
+                        </button>
+                    </div>
+                `;
+                // แทรกการ์ดใหม่เข้าไปต่อท้าย
+                cardContainer.insertAdjacentHTML('beforeend', cardHTML);
+            });
+
+            // ==========================================
+            // 🌟 2. ดึงการ์ด "ทั้งหมด" (เก่า+ใหม่) มาใส่ฟังก์ชันการทำงาน
+            // ==========================================
+            const allCards = document.querySelectorAll('#card_setting > div');
+
+            // ฟังก์ชันอัปเดตหมายเลขลำดับ (01, 02, 03...)
+            function updateCardNumbers() {
+                const currentCards = document.querySelectorAll('#card_setting > div');
+                currentCards.forEach((c, i) => {
+                    const numberText = c.querySelector('h1');
+                    if (numberText) numberText.innerText = String(i + 1).padStart(2, '0');
+                });
+            }
+
+            if (allCards.length > 0) {
+                allCards.forEach((card, index) => {
+                    
+                    // --- แอนิเมชัน Fade-in โหลดหน้า ---
+                    card.classList.add('opacity-0', 'transition-all', 'duration-500', 'ease-in-out');
+                    setTimeout(() => {
+                        card.classList.remove('opacity-0');
+                        card.classList.add('opacity-100');
+                    }, 300 + (index * 100));
+
+                    // --- ฟังก์ชันเปลี่ยนสถานะ (เปิด/ปิด) ---
+                    const statusBadge = card.children[3].querySelector('div'); 
+                    const statusBtn = card.querySelectorAll('button')[0]; 
+                    
+                    if (statusBtn && statusBadge) {
+                        let isOpened = true; 
+                        statusBtn.addEventListener('click', () => {
+                            isOpened = !isOpened; 
+                            if (!isOpened) {
+                                statusBadge.innerText = 'ปิดรับออเดอร์';
+                                statusBadge.classList.replace('bg-green-logo/30', 'bg-red-500/30');
+                                statusBadge.classList.replace('text-green-logo', 'text-red-500');
+                                statusBtn.classList.replace('bg-green-logo', 'bg-red-500');
+                                statusBtn.innerHTML = '<i class="fa-solid fa-circle-xmark"></i> เปลี่ยนสถานะ';
+                            } else {
+                                statusBadge.innerText = 'เปิดรับออเดอร์';
+                                statusBadge.classList.replace('bg-red-500/30', 'bg-green-logo/30');
+                                statusBadge.classList.replace('text-red-500', 'text-green-logo');
+                                statusBtn.classList.replace('bg-red-500', 'bg-green-logo');
+                                statusBtn.innerHTML = '<i class="fa-solid fa-circle-check"></i> เปลี่ยนสถานะ';
+                            }
+                        });
+                    }
+
+                    // --- ฟังก์ชันซ่อนเมนู (บังรูปภาพ) ---
+                    const hideBtn = card.querySelectorAll('button')[1]; 
+                    const imgEl = card.children[1].querySelector('img'); 
+                    
+                    if (hideBtn && imgEl) {
+                        const wrapper = document.createElement('div');
+                        wrapper.className = 'relative size-[170px] rounded-3xl overflow-hidden';
+                        
+                        imgEl.parentNode.insertBefore(wrapper, imgEl);
+                        wrapper.appendChild(imgEl);
+                        
+                        const overlay = document.createElement('div');
+                        overlay.className = 'absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 transition-opacity duration-300 pointer-events-none';
+                        overlay.innerHTML = '<i class="fa-solid fa-eye-slash text-white text-[60px]"></i>';
+                        wrapper.appendChild(overlay);
+
+                        let isHidden = false; 
+                        hideBtn.addEventListener('click', () => {
+                            isHidden = !isHidden; 
+                            if (isHidden) {
+                                overlay.classList.remove('opacity-0'); 
+                                hideBtn.innerHTML = '<i class="fa-solid fa-eye"></i> แสดงเมนู'; 
+                                hideBtn.classList.replace('bg-black', 'bg-gray-500'); 
+                            } else {
+                                overlay.classList.add('opacity-0'); 
+                                hideBtn.innerHTML = '<i class="fa-solid fa-eye-slash"></i> ซ่อนเมนู';
+                                hideBtn.classList.replace('bg-gray-500', 'bg-black'); 
+                            }
+                        });
+                    }
+
+                    // --- ฟังก์ชันลบเมนู ---
+                    const manageBtn = card.querySelectorAll('button')[2];
+                    
+                    if (manageBtn) {
+                        manageBtn.addEventListener('click', () => {
+                            const isConfirmed = confirm('⚠️ คุณแน่ใจหรือไม่ว่าต้องการ "ลบ" เมนูนี้ออกจากระบบ?');
+                            if (isConfirmed) {
+                                card.style.transition = 'all 0.3s ease-in-out';
+                                card.style.opacity = '0';
+                                card.style.transform = 'scale(0.95)';
+                                
+                                setTimeout(() => {
+                                    // 1. ตรวจสอบว่าเป็นการ์ดที่เพิ่มมาใหม่หรือไม่ ถ้าใช่ ให้ลบออกจาก localStorage ด้วย
+                                    const menuId = manageBtn.getAttribute('data-id');
+                                    if (menuId) {
+                                        let saved = JSON.parse(localStorage.getItem('myRestaurantMenus')) || [];
+                                        saved = saved.filter(m => m.id != menuId); // คัดข้อมูลตัวที่ถูกลบออก
+                                        localStorage.setItem('myRestaurantMenus', JSON.stringify(saved));
+                                    }
+
+                                    // 2. ลบออกจากหน้าเว็บ และจัดเลขลำดับใหม่
+                                    card.remove(); 
+                                    updateCardNumbers(); 
+                                }, 300);
+                            }
+                        });
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

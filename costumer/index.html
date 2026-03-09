@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สดชื่น</title>
+    <script src="https://kit.fontawesome.com/e35c90909d.js" crossorigin="anonymous"></script>
+    <link href="./src/output.css" rel="stylesheet">
+    <script src="./add-menu.js"></script>
+    <link rel="icon" type="image/png" href="./img/logo-new-2.png"> 
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+</head>
+
+<body class="bg-[#F3F4F6] min-h-screen">
+
+    <!-- Bar ข้างบนที่เป็นโลโก้ + คิวก่อนหน้่า -->
+   <nav class="fixed top-0 w-full z-50">
+        
+        <div class="bg-[#4CAF50] shadow-lg shadow-black/10 relative z-20 w-full">
+            
+            <div class="flex justify-between items-center px-6 py-3 max-w-[1200px] mx-auto">
+                <!-- ส่วนโลโก้ ฝั่งซ้าย -->
+                <div class="flex flex-row items-center space-x-2 ">
+                    <img src="./img/logo-new.png" alt="Logo" class="w-16 rounded-full">
+                    <div class="text-white">
+                        <p class="text-xl font-base">ร้านสดชื่น</p>
+                        <p class="text-sm font-light">หน้าม.พะเยา</p>
+                    </div>
+                </div>
+
+                <div class="flex gap-4">
+                    <!-- ส่วนคิวที่รอ ตรงกลาง -->
+                    <div class="flex justify-center items-center bg-black/20 p-1.5 rounded-full">
+                        <p class="text-white text-md font-medium mx-2 max-[390px]:hidden">จำนวนคิวทั้งหมด:</p>
+                        <span class="bg-[radial-gradient(circle,_var(--color-orange-400)_40%,_var(--color-orange-200)_100%)] inline-flex items-center justify-center text-white font-bold rounded-full w-8 h-8">9</span>
+                    </div>
+                    <!-- ส่วนตะกร้าที่อยู่ผั่งขวา -->
+                    <div class="flex justify-center items-center bg-[#FF9800] px-5  rounded-full relative max-sm:hidden cursor-pointer"
+                        onclick="goCartPage()">
+                        <span class="bg-white border-2 border-[#4CAF50] text-sm font-medium flex justify-center items-center w-7 h-7 rounded-full absolute -top-2 -right-2">0</span>
+                        <i class="fa-solid fa-bag-shopping text-white text-xl"></i>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        
+        <div id="detailMenu" class="bg-[#F3F4F6] w-full relative z-10">
+            <div class="max-w-[1200px] mx-auto px-6 pt-6 pb-4">
+                <p class="text-xl font-semibold">เมนูอาหาร</p>
+                <p class="text-base font-light">เลือกเมนูที่คุณต้องการ</p>
+            </div>
+        </div>
+        
+    </nav>
+    
+
+    <!-- เมนูอาหาร -->
+    <main id="home" class="pb-20 pt-44 max-w-[1200px] mx-auto">
+
+        <div class="grid grid-cols-2 gap-4 p-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5">
+            <!-- การ์ดเมนู -->
+            <div class="bg-white flex flex-col rounded-3xl shadow-lg hover:scale-105 transition-transform duration-300">
+                <img src="./img/food-menu1.jpg" alt="food" class="w-full h-48 object-cover rounded-t-3xl">
+
+                <h2 class="mx-4 mt-4 text-lg font-medium line-clamp-1 max-[390px]:text-lg">ข้าวห่อหมกทะเล</h2>
+                <div class="flex justify-between mx-4 my-2">
+                    <p class="text-[#FF9800] text-xl font-semibold max-[390px]:text-lg">55
+                        <span class="text-base font-light text-black/30">บาท</span>
+                    </p>
+
+                    <button onclick="addMenuPage(0)"
+                        class=" bg-[#4CAF50] text-white font-medium text-md rounded-full w-20 py-1.5 flex justify-center items-center gap-1 hover:bg-green-700 transition max-[390px]:text-lg"><i
+                            class="fa-solid fa-plus text-sm"></i><span class="max-[460px]:hidden">เพิ่ม</span></button>
+                </div>
+            </div>
+
+            <div class="bg-white flex flex-col rounded-3xl shadow-lg hover:scale-105 transition-transform duration-300">
+                <img src="./img/food-menu8.jpg" alt="food" class="w-full h-48 object-cover rounded-t-3xl">
+                <h2 class="mx-4 mt-4 text-lg font-medium line-clamp-1 max-[390px]:text-lg">ข้าวหน้าหมูเทอริยากิ</h2>
+                <div class="flex justify-between mx-4 my-2">
+                    <p class="text-[#FF9800] text-xl font-semibold max-[390px]:text-lg">55
+                        <span class="text-base font-light text-black/30">บาท</span>
+                    </p>
+
+                    <button onclick="addMenuPage(7)"
+                        class=" bg-[#4CAF50] text-white font-medium text-md rounded-full w-20 py-1.5 flex justify-center items-center gap-1 hover:bg-green-700 transition max-[390px]:text-lg"><i
+                            class="fa-solid fa-plus text-sm"></i><span class="max-[460px]:hidden">เพิ่ม</span></button>
+                </div>
+            </div>
+
+            <div class="bg-white flex flex-col rounded-3xl shadow-lg hover:scale-105 transition-transform duration-300">
+                <img src="./img/food-menu5.jpg" alt="food" class="w-full h-48 object-cover rounded-t-3xl">
+                <h2 class="mx-4 mt-4 text-lg font-medium line-clamp-1 max-[390px]:text-lg">ข้าวหมูคั่วพริกเกลือ</h2>
+                <div class="flex justify-between mx-4 my-2">
+                    <p class="text-[#FF9800] text-xl font-semibold max-[390px]:text-lg">45
+                        <span class="text-base font-light text-black/30">บาท</span>
+                    </p>
+
+                    <button onclick="addMenuPage(4)"
+                        class=" bg-[#4CAF50] text-white font-medium text-md rounded-full w-20 py-1.5 flex justify-center items-center gap-1 hover:bg-green-700 transition max-[390px]:text-lg"><i
+                            class="fa-solid fa-plus text-sm"></i><span class="max-[460px]:hidden">เพิ่ม</span></button>
+                </div>
+            </div>
+
+            <div class="bg-white flex flex-col rounded-3xl shadow-lg hover:scale-105 transition-transform duration-300">
+                <img src="./img/food-menu7.jpg" alt="food" class="w-full h-48 object-cover rounded-t-3xl">
+                <h2 class="mx-4 mt-4 text-lg font-medium line-clamp-1 max-[390px]:text-lg">ข้าวทะเลผัดผงกะหรี่</h2>
+                <div class="flex justify-between mx-4 my-2">
+                    <p class="text-[#FF9800] text-xl font-semibold max-[390px]:text-lg">55
+                        <span class="text-base font-light text-black/30">บาท</span>
+                    </p>
+
+                    <button onclick="addMenuPage(6)"
+                        class=" bg-[#4CAF50] text-white font-medium text-md rounded-full w-20 py-1.5 flex justify-center items-center gap-1 hover:bg-green-700 transition max-[390px]:text-lg"><i
+                            class="fa-solid fa-plus text-sm"></i><span class="max-[460px]:hidden">เพิ่ม</span></button>
+                </div>
+            </div>
+
+            <div class="bg-white flex flex-col rounded-3xl shadow-lg hover:scale-105 transition-transform duration-300">
+                <div class="relative">
+                    <img src="./img/food-menu2.jpg" alt="food" class="w-full h-48 object-cover rounded-t-3xl grayscale">
+                    <div class="absolute flex inset-0 justify-center items-center -rotate-12">
+                        <p class="text-white font-medium px-3 py-0.5 border-2 rounded-full">หมด</p>
+                    </div>
+                </div>
+                <h2 class="mx-4 mt-4 text-lg font-medium line-clamp-1 max-[390px]:text-lg">ข้าวผัดพริกแกง</h2>
+                <div class="flex justify-between mx-4 my-2">
+                    <p class="text-[#FF9800] text-xl font-semibold max-[390px]:text-lg">50
+                        <span class="text-base font-light text-black/30">บาท</span>
+                    </p>
+
+                    <button onclick="addMenuPage(1)"
+                        class=" bg-black/30 text-white font-medium text-md rounded-full w-20 py-1.5 flex justify-center items-center gap-1 max-[390px]:text-lg "><span class="text-white max-[460px]:hidden">หมด</span></button>
+                </div>
+            </div>
+
+            <div class="bg-white flex flex-col rounded-3xl shadow-lg hover:scale-105 transition-transform duration-300">
+                <div class="relative">
+                    <img src="./img/food-menu6.jpg" alt="food" class="w-full h-48 object-cover rounded-t-3xl grayscale">
+                    <div class="absolute flex inset-0 justify-center items-center -rotate-12">
+                        <p class="text-white font-medium px-3 py-0.5 border-2 rounded-full">หมด</p>
+                    </div>
+                </div>
+                <h2 class="mx-4 mt-4 text-lg font-medium line-clamp-1 max-[390px]:text-lg">ข้าวไข่เจียว</h2>
+                <div class="flex justify-between mx-4 my-2">
+                    <p class="text-[#FF9800] text-xl font-semibold max-[390px]:text-lg">40
+                        <span class="text-base font-light text-black/30">บาท</span>
+                    </p>
+
+                    <button onclick="addMenuPage(5)"
+                        class=" bg-black/30 text-white font-medium text-md rounded-full w-20 py-1.5 flex justify-center items-center gap-1 max-[390px]:text-lg"><span class="text-white max-[460px]:hidden">หมด</span></button>
+                </div>
+            </div>
+
+            <div class="bg-white flex flex-col rounded-3xl shadow-lg hover:scale-105 transition-transform duration-300">
+                <div class="relative">
+                    <img src="./img/food-menu4.jpg" alt="food" class="w-full h-48 object-cover rounded-t-3xl grayscale">
+                    <div class="absolute flex inset-0 justify-center items-center -rotate-12">
+                        <p class="text-white font-medium px-3 py-0.5 border-2 rounded-full">หมด</p>
+                    </div>
+                </div>
+                <h2 class="mx-4 mt-4 text-lg font-medium line-clamp-1 max-[390px]:text-lg">ข้าวกะเพรา</h2>
+                <div class="flex justify-between mx-4 my-2">
+                    <p class="text-[#FF9800] text-xl font-semibold max-[390px]:text-lg">40
+                        <span class="text-base font-light text-black/30">บาท</span>
+                    </p>
+
+                    <button onclick="addMenuPage(3)"
+                        class=" bg-black/30 text-white font-medium text-md rounded-full w-20 py-1.5 flex justify-center items-center gap-1 max-[390px]:text-lg"><span class="text-white max-[460px]:hidden">หมด</span></button>
+                </div>
+            </div>
+
+            <div class="bg-white flex flex-col rounded-3xl shadow-lg hover:scale-105 transition-transform duration-300">
+                <div class="relative">
+                    <img src="./img/food-menu3.jpg" alt="food" class="w-full h-48 object-cover rounded-t-3xl grayscale">
+                    <div class="absolute flex inset-0 justify-center items-center -rotate-12">
+                        <p class="text-white font-medium px-3 py-0.5 border-2 rounded-full">หมด</p>
+                    </div>
+                </div>
+                <h2 class="mx-4 mt-4 text-lg font-medium line-clamp-1 max-[390px]:text-lg">ข้าวไข่ขยี้ปลากระป๋อง</h2>
+                <div class="flex justify-between mx-4 my-2">
+                    <p class="text-[#FF9800] text-xl font-semibold max-[390px]:text-lg">55
+                        <span class="text-base font-light text-black/30">บาท</span>
+                    </p>
+
+                    <button onclick="addMenuPage(2)"
+                        class=" bg-black/30 text-white font-medium text-md rounded-full w-20 py-1.5 flex justify-center items-center gap-1 max-[390px]:text-lg"><span class="text-white max-[460px]:hidden">หมด</span></button>
+                </div>
+            </div>
+            
+        </div>
+
+    </main>
+
+
+    <main id="addMenu" class="hidden pt-28 max-w-[1200px] mx-auto">
+
+        <!-- กลับไปหน้าเมนู -->
+        <div class="px-6 flex items-center space-x-2">
+            <div onclick="backHomePage()" class="bg-white p-2 rounded-full w-10 h-10 flex justify-center items-center shadow-lg">
+                <i class="fa-solid fa-chevron-left hover:cursor-pointer"></i>
+            </div>
+            <p class="text-xl font-semibold">รายการอาหาร</p>
+        </div>
+
+        <main id="addMenu" class="p-6 flex flex-row max-sm:pb-[100px] sm:space-x-4 max-sm:flex-col">
+
+            <!-- รูปฝั่งซ้าย -->
+            <div class="bg-white flex-col pb-6 w-full sm:w-[55%] h-fit rounded-3xl shadow-lg">
+                <img id="addMenuImg" alt="food" class="w-full h-full object-cover rounded-3xl p-4">
+                <div class="flex justify-between px-6 py-6">
+                    <p id="addMenuName" class="text-xl font-semibold"></p>
+                    <p id="addMenuPrice" class="text-xl font-semibold text-[#FF9800]"> <span
+                            class="text-base font-light">บาท</span></p>
+                </div>
+            </div>
+
+            <!-- รายละเอียดเมนู -->
+            <div class="w-full sm:w-[45%]">
+
+                <!-- ส่วนการ์ดขาวฝั่งขวา -->
+                <div class="bg-white rounded-3xl px-12 py-8 shadow-lg w-full">
+                    <p class="flex justify-center text-2xl font-semibold pb-10">ตัวเลือก</p>
+
+                    <!-- พิเศษ ธรรมดา -->
+                    <div class="pb-6">
+                        <p class="pb-1 text-lg font-medium">ปริมาณอาหาร</p>
+                        <form class="space-y-2">
+                            <label class="w-full flex justify-between border border-gray-300 rounded-xl hover:bg-gray-100 transition">
+                                <div class="px-4 py-3 flex items-center space-x-2">
+                                    <input type="radio" id="normal" name="size" value="normal" checked onchange="changeSize()">
+                                    <label for="normal">ธรรมดา</label>
+                                </div>
+                            </label>
+                            <label class="w-full flex justify-between border border-gray-300 rounded-xl hover:bg-gray-100 transition">
+                                <div class="px-4 py-3 flex items-center space-x-2">
+                                    <input type="radio" id="extra" name="size" value="extra" onchange="changeSize()">
+                                    <label for="extra">พิเศษ(กับข้าว)</label>
+                                </div>
+                                <p class="px-6 py-2 text-[#FF9800] font-semibold">+10</p>
+                            </label>
+
+                        </form>
+                    </div>
+
+                    <!-- เพิ่มข้าว -->
+                    <div class="pb-6">
+                        <p class="pb-1 text-lg font-medium">ปริมาณข้าว</p>
+                        <form class="space-y-2">
+
+                            <label class="w-full flex justify-between border border-gray-300 rounded-xl hover:bg-gray-100 transition">
+                                <div class="px-4 py-3 flex items-center space-x-2">
+                                    <input type="radio" id="#" name="ricesize" value="reduce">
+                                    <label for="reduce">ข้าวน้อย</label>
+                                </div>
+                            </label>
+
+                            <label class="w-full flex justify-between border border-gray-300 rounded-xl hover:bg-gray-100 transition">
+                                <div class="px-4 py-3 flex items-center space-x-2">
+                                    <input type="radio" id="normalRice" name="ricesize" value="reduce" checked >
+                                    <label for="reduce">ปกติ</label>
+                                </div>
+                            </label>
+
+                            <label class="w-full flex justify-between border border-gray-300 rounded-xl hover:bg-gray-100 transition">
+                                <div class="px-4 py-3 flex items-center space-x-2">
+                                    <input type="radio" id="#" name="ricesize" value="add">
+                                    <label for="add">ข้าวมาก</label>
+                                </div>
+                            </label>
+
+                        </form>
+                    </div>
+                    
+                    <!-- คำขอเพิ่มเติม -->
+                    <div class="pb-8">
+                        <p class="pb-1 text-lg font-medium">คำขอเพิ่มเติม</p>
+                        <input type="text" id="req" name="req" placeholder="ระบุคำขอเพิ่มเติม"
+                        class="border border-gray-300 rounded-xl px-4 py-3 w-full" />
+                    </div>
+                    
+                    <hr class="border-0.5 border-gray-600">
+                    <!-- เพิ่มจำนวน -->
+                    <div class="px-6 pt-6 pb-8 flex justify-between space-x-2">
+                        <p class="text-xl font-medium">จำนวน</p>
+                        <div class="bg-neutral-300 rounded-full p-1 flex justify-between items-center space-x-4">
+                            <button
+                                class="rounded-full w-6 h-6 flex items-center justify-center cursor-pointer"
+                                id="minusMenu" onclick="minusMenu()"><i
+                                    class="fa-solid fa-minus text-sm"></i></button>
+                            <span class="font-medium" id="value">1</span>
+                            <button
+                                class=" rounded-full w-6 h-6 flex items-center justify-center cursor-pointer"
+                                id="plusMenu" onclick="plusMenu()"> <i
+                                    class="fa-solid fa-plus text-sm"></i></button>
+                        </div>
+                    </div>
+                    <!-- ยอดรวม -->
+                    <div class="flex justify-between px-6 pb-6">
+                        <p class="text-xl font-medium">รวม</p>
+                        <p class="text-xl font-medium text-[#FF9800]" id="price"></p>
+                    </div>
+
+                    <!-- ปุ่มเพิ่มลงตระกล้า -->
+                    <div class="flex justify-center px-6 " onclick="checkSelection()">
+                        <button
+                            class="bg-[#4CAF50] text-white font-medium text-xl rounded-full w-full h-14 hover:bg-green-700 transition cursor-pointer">เพิ่มไปยังตะกร้า</button>
+                    </div>
+
+                </div>
+        </main>
+    </main>
+
+    <!-- ตระกร้าของฉัน -->
+    <div class="p-6 fixed bottom-0 right-0 w-fit sm:hidden">
+
+        <div class="flex justify-center bg-[#FF9800] px-4 py-2 rounded-full relative  cursor-pointer"
+            onclick="goCartPage()">
+            <span
+                class="bg-black text-white text-sm font-medium flex justify-center items-center w-8 h-8 rounded-full absolute -top-2 -right-2">1</span>
+            <i class="fa-solid fa-bag-shopping text-white text-xl"></i>
+            <p class="text-white text-lg font-medium px-2">ตะกร้าของฉัน</p>
+        </div>
+    </div>
+
+    <!-- alert แจ้งเตือนเลือกออปชันครบมั้ย-->
+    <!-- <div id="customAlert" class="hidden fixed inset-0 bg-black/50 z-[100] flex justify-center items-center px-4 transition-opacity">
+        <div class="bg-white rounded-3xl shadow-2xl p-8 w-full max-w-sm text-center transform scale-100">
+            
+            <div class="mx-auto flex items-center justify-center h-20 w-20 rounded-full bg-[#FFF5E5] mb-4">
+                <i class="fa-solid fa-triangle-exclamation text-4xl text-[#FF9800]"></i>
+            </div>
+            
+            <h3 class="text-xl font-bold mb-3">แจ้งเตือน</h3>
+            <p id="alertMessage" class="text-[#666666] text-lg font-medium mb-8"></p>
+            
+            <button onclick="closeAlert()" class="w-full bg-[#FF9800] text-white text-lg font-bold rounded-full py-2 hover:bg-orange-600 transition shadow-md">
+                ตกลง
+            </button>
+            
+        </div>
+    </div> -->
+
+    <!-- alert เพิ่มรายการเข้าตะกร้าแล้ว-->
+    <div id="successAlert" class="hidden fixed inset-0 bg-black/50 z-[100] flex justify-center items-center px-4 transition-opacity">
+        <div class="bg-white rounded-3xl shadow-2xl p-8 w-full max-w-sm text-center transform scale-100">
+            
+            <div class="mx-auto flex items-center justify-center h-20 w-20 rounded-full bg-green-100 mb-4">
+                <i class="fa-solid fa-circle-check text-[#4CAF50] text-5xl"></i>
+            </div>
+            
+            <h3 class="text-xl font-bold mb-3">แจ้งเตือน</h3>
+            <p id="successAlertMessage" class="text-[#666666] text-lg font-medium mb-8"></p>
+            
+        </div>
+    </div>
+
+
+</body>
+
+</html>
