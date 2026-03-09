@@ -74,7 +74,7 @@
 
 
                 <!-- เพิ่มรายการ -->
-                <button id="addOrderIcon" class="flex flex-col items-center gap-2 mt-6 w-fit mx-auto">
+                <button id="addOrderIcon" class="flex flex-col items-center gap-2 w-fit mx-auto">
                     <span
                         class="bg-[#D9D9D9] w-12 h-12 rounded-full flex justify-center items-center shadow-lg hover:bg-gray-400">
                         <i class="fa-solid fa-plus text-sm" onclick="goHomePage()"></i>
@@ -86,11 +86,10 @@
                     class="hidden bg-orange-400 w-fit mx-auto rounded-full flex justify-center items-center pr-4 py-2 space-x-2 shadow-lg hover:bg-orange-700 transition"
                     onclick="goHomePage()">
                     <i class="fa-solid fa-face-smile text-white text-4xl pl-2"></i>
-                    <p class="text-white text-xl font-semibold p-1">กลับไปหน้าเมนูอาหาร</p>
+                    <p class="text-white text-xl font-medium p-1">กลับไปหน้าเมนูอาหาร</p>
                 </button>
 
             </div>
-
 
             <!-- สรุปการ์ดฝั่งขวา -->
             <div class="bg-white rounded-3xl shadow-lg pb-10 w-full sm:w-[45%] max-sm:hidden">
@@ -173,17 +172,17 @@
                     <div id="queueInfo" class="flex flex-col items-center rounded-3xl py-8 gap-8 bg-[#F2F2F2]">
                         <p class="text-xl font-semibold">หมายเลขคิวของท่าน</p>
                         <p id="queueNumber" class="text-6xl font-semibold"></p>
-                        <p id="queueType" class="bg-[#4CAF50] text-white text-lg font-extrabold w-fit rounded-full px-6 py-1.5">ทานที่ร้าน
+                        <p id="queueType" class="bg-[#4CAF50] text-white text-md font-medium w-fit rounded-full px-6 py-1">ทานที่ร้าน
                         </p>
                     </div>
 
                     <div class="flex justify-center items-center py-6 gap-4 bg-[#EDF7ED] rounded-3xl">
-                        <p class="text-[#4CAF50] text-xl font-extrabold">รออีก <span
-                                class="text-3xl font-extrabold">2</span> คิว</p>
+                        <p class="text-[#4CAF50] text-xl font-semibold">รออีก <span
+                                class="text-3xl font-semibold">2</span> คิว</p>
                     </div>
 
                     <div class="flex justify-center">
-                        <p class="text-lg font-semibold text-[#FF9800]">กรุณาชำระเงินที่หน้าเคาน์เตอร์</p>
+                        <p class="text-md font-medium text-[#FF9800]">กรุณาชำระเงินที่หน้าเคาน์เตอร์</p>
                     </div>
                 </div>
             </div>
@@ -221,10 +220,10 @@
                 <i class="fa-solid fa-triangle-exclamation text-4xl text-[#FF9800]"></i>
             </div>
             
-            <h3 class="text-xl font-bold mb-3">แจ้งเตือน</h3>
-            <p id="alertMessage" class="text-[#666666] text-lg font-medium mb-8"></p>
+            <h3 class="text-xl font-semibold mb-3">แจ้งเตือน</h3>
+            <p id="alertMessage" class="text-[#666666] text-md font-medium mb-8"></p>
             
-            <button onclick="closeAlert()" class="w-full bg-[#FF9800] text-white text-lg font-bold rounded-full py-2 hover:bg-orange-600 transition shadow-md">
+            <button onclick="closeAlert()" class="w-full bg-[#FF9800] text-white text-lg font-medium rounded-full py-2 hover:bg-orange-600 transition shadow-md">
                 ตกลง
             </button>
             
@@ -239,14 +238,14 @@
                 <i class="fa-solid fa-trash-can text-4xl text-[#FF3C00]"></i>
             </div>
             
-            <h3 class=" text-xl font-bold mb-3">ยืนยันการลบ</h3>
-            <p class="text-gray-500 text-lg font-medium mb-8">ต้องการลบเมนูนี้ออกจากตะกร้าใช่หรือไม่?</p>
+            <h3 class=" text-xl font-semibold mb-3">ยืนยันการลบ</h3>
+            <p class="text-gray-500 text-md font-medium mb-8">ต้องการลบเมนูนี้ออกจากตะกร้าใช่หรือไม่?</p>
             
             <div class="flex gap-4">
-                <button onclick="proceedDelete()" class="w-1/2 bg-black text-white text-lg font-bold rounded-full py-2 hover:bg-red-600 transition shadow-md">
+                <button onclick="proceedDelete()" class="w-1/2 bg-black text-white text-lg font-medium rounded-full py-2 hover:bg-red-600 transition shadow-md">
                     ยืนยันการลบ
                 </button>
-                <button onclick="closeConfirm()" class="w-1/2 bg-[#E5E5E5] text-[#FF3C00] text-lg font-bold rounded-full py-2 hover:bg-gray-300 transition shadow-md">
+                <button onclick="closeConfirm()" class="w-1/2 bg-[#E5E5E5] text-[#FF3C00] text-lg font-medium rounded-full py-2 hover:bg-gray-300 transition shadow-md">
                     ยกเลิก
                 </button>
             </div>

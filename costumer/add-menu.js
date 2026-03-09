@@ -58,8 +58,8 @@ const menus = [
 ]
 
 // ลิ้งไปหน้าตะกร้า
-function goCartPage(){
-    window.location.href = './cart.html' ;
+function goCartPage() {
+    window.location.href = './cart.html';
 }
 
 // กดเพิ่มเมนูแล้วซ่อนหน้าหลักแล้วให้หน้ารายละเอียดเมนูขึ้นมาแทน
@@ -96,18 +96,18 @@ function addMenuPage(groupId) {
 
     document.getElementById('normal').checked = true;
     document.getElementById('normalRice').checked = true;
-} 
+}
 
 // กดหลับไปหน้าhomeเหมือนเดิม
 function backHomePage() {
-    
+
     const home = document.getElementById('home');
     const addMenu = document.getElementById('addMenu');
     const detailMenu = document.getElementById('detailMenu');
 
     const size = document.getElementsByName('size');
     const ricesize = document.getElementsByName('ricesize');
-    
+
     count = 1;
 
     home.classList.remove('hidden');
@@ -119,17 +119,16 @@ function backHomePage() {
     }
     for (let i = 0; i < ricesize.length; i++) {
         ricesize[i].checked = false;
-    } 
+    }
     if (document.getElementById('req')) {
         document.getElementById('req').value = '';
     }
-    if(document.getElementById('value')) {
+    if (document.getElementById('value')) {
         document.getElementById('value').textContent = count;
     }
 
     window.scrollTo(0, 0);
 }
-
 
 // การ์ดเพิ่มเข้าตะกร้าเรียบร้อบ
 function showSuccessAlert(message) {
@@ -148,21 +147,25 @@ function isChecked(name) {
 function checkSelection() {
     const foodName = document.getElementById('addMenuName').innerText;
     const foodImg = document.getElementById('addMenuImg').src;
-    
+    const reqText = document.getElementById('req').value.trim();
+    const thaiPattern = /^[ก-๙\s0-9]*$/;
+    if (reqText !== '' && !thaiPattern.test(reqText)) {
+        showAlert("กรุณากรอกคำขอเพิ่มเติมเป็นภาษาไทยเท่านั้น");
+        return;
+    }
+
     // ดึงข้อความจาก Option ที่เลือก
     const sizeRadio = document.querySelector('input[name="size"]:checked');
     const sizeOption = sizeRadio ? sizeRadio.nextElementSibling.innerText : 'ธรรมดา';
-    
-    const riceRadio = document.querySelector('input[name="ricesize"]:checked');
-   const riceOption = riceRadio ? riceRadio.value : 'normalRice';
-    
-    const reqText = document.getElementById('req').value;
 
-    const unitPrice = Price + extraPrice; 
+    const riceRadio = document.querySelector('input[name="ricesize"]:checked');
+    const riceOption = riceRadio ? riceRadio.value : 'normalRice';
+
+    const unitPrice = Price + extraPrice;
     const totalPrice = unitPrice * count;
 
     const cartItem = {
-        id: Date.now(), 
+        id: Date.now(),
         name: foodName,
         img: foodImg,
         price: totalPrice,
@@ -181,8 +184,8 @@ function checkSelection() {
 
     updateCartBadge();
 
-    showSuccessAlert("เพิ่มรายการอาหารลงตะกร้าเรียบร้อยแล้ว"); 
-    setTimeout(function() {
+    showSuccessAlert("เพิ่มรายการอาหารลงตะกร้าเรียบร้อยแล้ว");
+    setTimeout(function () {
         closeshowSuccessAlert();
         backHomePage();
     }, 1000);
@@ -192,15 +195,24 @@ function updateCartBadge() {
     let cart = JSON.parse(sessionStorage.getItem('myCart')) || [];
     let totalItems = 0;
     cart.forEach(item => totalItems += item.qty);
-    
+
     // ค้นหา span ที่แสดงตัวเลขตะกร้า
     const badges = document.querySelectorAll('.absolute.-top-2.-right-2');
     badges.forEach(badge => {
-        if(!badge.classList.contains('fa-bag-shopping') && badge.innerText !== undefined) {
+        if (!badge.classList.contains('fa-bag-shopping') && badge.innerText !== undefined) {
             badge.innerText = totalItems;
-            
+
         }
     });
+}
+
+function showAlert(message) {
+    document.getElementById('alertMessage').innerText = message;
+    document.getElementById('customAlert').classList.remove('hidden');
+}
+// กดปุ่ม ตกลง เพื่อปิดการ์ด
+function closeAlert() {
+    document.getElementById('customAlert').classList.add('hidden');
 }
 
 // สั่งให้อัปเดตเลขตะกร้า
@@ -211,24 +223,24 @@ let count = 1;
 let extraPrice = 0;
 function updateDisplay() {
     document.getElementById('value').textContent = count;
-    
+
     // คำนวณราคา (ราคาปกติ + ราคาพิเศษ) * จำนวนจาน
     let total = (Price + extraPrice) * count;
     document.getElementById('price').textContent = total + " บาท";
-    
+
 }
 
 function changeSize() {
     // เช็คว่า id="extra" โดนเลือกอยู่หรือเปล่า
     const isExtra = document.getElementById('extra').checked;
-    
+
     if (isExtra) {
-        extraPrice = 10; 
+        extraPrice = 10;
 
     } else {
-        extraPrice = 0;  
+        extraPrice = 0;
     }
-    
+
     updateDisplay();
 }
 
